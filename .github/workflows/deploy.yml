@@ -1,12 +1,9 @@
-name: Deploy Vue App to GitHub Pages
+name: Deploy Vue App to GitHub Pages (main branch)
 
 on:
   push:
     branches:
-      - main  # Triggers deployment on push to the main branch
-
-permissions:
-  contents: write  # This grants the GitHub Actions bot write access to the repository
+      - main  # Trigger workflow on push to the main branch
 
 jobs:
   build-and-deploy:
@@ -19,7 +16,7 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: '18.x'  # Adjust Node.js version as needed
+        node-version: '18.x'
 
     - name: Install dependencies
       run: npm install
@@ -27,8 +24,15 @@ jobs:
     - name: Build the Vue project
       run: npm run build
 
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v4
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./dist
+    - name: Move build output to /docs
+      run: |
+        rm -rf ./docs  # Remove old build files
+        mv ./dist ./docs  # Move the new build output to the /docs folder
+
+    - name: Commit and push changes to main
+      run: |
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+        git add .
+        git commit -m "Deploy to GitHub Pages"
+        git push origin main
