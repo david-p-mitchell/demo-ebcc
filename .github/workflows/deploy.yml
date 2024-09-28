@@ -5,6 +5,9 @@ on:
     branches:
       - main  # Triggers deployment on push to the main branch
 
+permissions:
+  contents: write  # This grants the GitHub Actions bot write access to the repository
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -16,7 +19,7 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: '18.x'  # You can adjust this version if needed
+        node-version: '18.x'  # Adjust Node.js version as needed
 
     - name: Install dependencies
       run: npm install
@@ -27,11 +30,5 @@ jobs:
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v4
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}  # This is automatically provided by GitHub Actions
-        publish_dir: ./dist  # This is the folder where the built Vue project is located
-
-    - name: Clean up old GitHub Pages branches
-      run: |
-        git fetch --all
-        git branch -D gh-pages || true
-        git push origin --delete gh-pages || true
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./dist
