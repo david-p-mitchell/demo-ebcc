@@ -1,0 +1,6 @@
+.responsive-image {
+    width: 100%; /* Makes the image fill the width of its container */
+    height: auto; /* Maintains the aspect ratio */
+    display: block; /* Removes extra spacing below the image */
+  }
+  
