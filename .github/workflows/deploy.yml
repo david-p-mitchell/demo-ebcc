@@ -3,7 +3,7 @@ name: Deploy React App to GitHub Pages
 on:
   push:
     branches:
-      - main  # Adjust if your default branch is not `main`
+      - main  # Adjust if your default branch is different
 
 jobs:
   deploy:
@@ -16,15 +16,14 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: 16
+        node-version: 16  # Adjust as necessary
 
     - name: Install dependencies
       run: npm install
 
-    - name: Build project
-      run: npm run build
+    - name: Build React app
+      run: npm run build  # Make sure the build step runs successfully
 
-    # Disable Jekyll (create .nojekyll file)
     - name: Disable Jekyll
       run: echo "" > build/.nojekyll
 
@@ -32,4 +31,4 @@ jobs:
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./build
+        publish_dir: ./build  # Ensure this points to the build folder
