@@ -34,7 +34,9 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="navbar-container">
+      <NavLink to="/" className="navbar-link" onClick={handleLinkClick}>
         <div className="navbar-logo">Enon Baptist Church</div>
+        </NavLink>
         <button className="hamburger" onClick={toggleMenu}>
           &#9776; {/* Hamburger icon */}
         </button>
@@ -42,13 +44,6 @@ const Navbar = () => {
 
       <div className={`navbar-menu ${isMenuOpen ? 'active' : ''}`}>
         <ul className="navbar-list">
-          <li className="navbar-item">
-            <NavLink to="/" className="navbar-link" onClick={handleLinkClick}>Home</NavLink>
-          </li>
-          <li className="navbar-item">
-            <NavLink to="/about" className="navbar-link" onClick={handleLinkClick}>About</NavLink>
-          </li>
-
           <DropdownMenu 
             title="About Us" 
             links={aboutLinks} 
