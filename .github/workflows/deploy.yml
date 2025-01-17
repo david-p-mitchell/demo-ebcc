@@ -24,6 +24,10 @@ jobs:
     - name: Build project
       run: npm run build
 
+    # Disable Jekyll (create .nojekyll file)
+    - name: Disable Jekyll
+      run: echo "" > build/.nojekyll
+
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
