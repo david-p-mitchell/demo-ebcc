@@ -22,13 +22,13 @@ jobs:
       run: npm install
 
     - name: Build React app
-      run: npm run build  # Make sure the build step runs successfully
+      run: npm run build  # Build your React app for production
 
     - name: Disable Jekyll
-      run: echo "" > build/.nojekyll
+      run: echo "" > build/.nojekyll  # Prevent Jekyll from interfering with your build
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./build  # Ensure this points to the build folder
+        publish_dir: ./build  # Deploy the contents of the build folder
