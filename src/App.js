@@ -6,14 +6,12 @@ import Sermons from './components/pages/Sermons';
 import Contact from './components/pages/Contact';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
-import ChurchImage from './components/ChurchImage';
 
 function App() {
   return (
       <Router>
           <div className="app-container">
               <Navbar />
-              <ChurchImage />
               <Routes>
                   <Route path="/" element={<Home />} />
                   <Route path="/about" element={<About />} />
@@ -21,7 +19,6 @@ function App() {
                   <Route path="/sermons" element={<Sermons />} />
                   <Route path="/contact" element={<Contact />} />
               </Routes>
-              
           </div>
       </Router>
   );
