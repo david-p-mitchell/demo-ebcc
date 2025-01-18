@@ -1,0 +1,12 @@
+.sermon-widget-desktop {
+    float: right;
+    width: auto;
+    position: flex;
+
+  }
+
+  @media (max-width: 768px) {
+    .sermon-widget-desktop {
+        width: 100%;
+    }
+  }
