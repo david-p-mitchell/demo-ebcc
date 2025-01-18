@@ -22,19 +22,25 @@ const Navbar = () => {
   };
 
   const aboutLinks = [
-    { to: "/team", label: "Team" },
-    { to: "/mission", label: "Mission" },
+    { to: "/what-we-believe", label: "What We Believe" },
+    { to: "/church-history", label: "Church History" },
+    { to: "/pastors-message", label: "Pastor's Message" },
   ];
 
   const eventLinks = [
-    { to: "/event1", label: "Event 1" },
-    { to: "/event2", label: "Event 2" },
+    { to: "/sunday-services", label: "Sunday Services" },
+    { to: "/bible-study", label: "Bible Study" },
+    { to: "/womens-meetings", label: "Women's Meetings" },
+    { to: "/event2", label: "Online Prayer Meeting" },
+    { to: "/mens-meetings", label: "Men's Meetings" },
+    { to: "/youth", label: "Discoverers" },
+    { to: "/children", label: "Children" },
   ];
 
   return (
     <nav className="navbar">
       <div className="navbar-container">
-      <NavLink to="/" className="navbar-link" onClick={handleLinkClick}>
+      <NavLink to="/" className="navbar-link-home" onClick={handleLinkClick}>
         <div className="navbar-logo">Enon Baptist Church</div>
         </NavLink>
         <button className="hamburger" onClick={toggleMenu}>
@@ -53,7 +59,7 @@ const Navbar = () => {
           />
 
           <DropdownMenu 
-            title="Events" 
+            title="What's On" 
             links={eventLinks} 
             isOpen={activeDropdown === 1} 
             onClick={() => toggleDropdown(1)} 
