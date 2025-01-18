@@ -1,6 +1,4 @@
 import ChurchImage from "../ChurchImage";
-import SermonWidget from "../widgets/SermonWidget";
-import ScheduleWidget from "../widgets/ScheduleWidget";
 import './Home.css';
 function Home() {
     return (
