@@ -13,8 +13,7 @@
                             https://enonbaptistchatham.org.uk/wp-content/uploads/2018/12/GMT-MST-Photo-1.jpg 446w, 
                             https://enonbaptistchatham.org.uk/wp-content/uploads/2018/12/GMT-MST-Photo-1-300x169.jpg 300w
                         " 
-                        sizes="(max-width: 446px) 100vw, 446px" 
-						class="responsive-image"
+                        class="responsive-image"
                     />
                 </a>
             </figure>
