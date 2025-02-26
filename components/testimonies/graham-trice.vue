@@ -9,10 +9,6 @@
                         decoding="async" 
                         src="https://enonbaptistchatham.org.uk/wp-content/uploads/2018/12/GMT-MST-Photo-1.jpg" 
                         alt="Graham Trice" 
-                        srcset="
-                            https://enonbaptistchatham.org.uk/wp-content/uploads/2018/12/GMT-MST-Photo-1.jpg 446w, 
-                            https://enonbaptistchatham.org.uk/wp-content/uploads/2018/12/GMT-MST-Photo-1-300x169.jpg 300w
-                        " 
                         class="responsive-image"
                     />
                 </a>
