@@ -7,8 +7,6 @@
                     <img 
                         fetchpriority="high" 
                         decoding="async" 
-                        width="446" 
-                        height="251" 
                         src="https://enonbaptistchatham.org.uk/wp-content/uploads/2018/12/GMT-MST-Photo-1.jpg" 
                         alt="Graham Trice" 
                         srcset="
