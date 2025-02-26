@@ -4,7 +4,9 @@
 	<div  class="wpb_single_image wpb_content_element vc_align_center  wpb_animate_when_almost_visible wpb_zoomIn zoomIn">
 		
 		<figure class="wpb_wrapper vc_figure">
-			<a href="https://enonbaptistchatham.org.uk/wp-content/uploads/2018/12/GMT-MST-Photo-1.jpg" target="_self" class="vc_single_image-wrapper   vc_box_border_grey"><img fetchpriority="high" decoding="async" width="446" height="251" src="https://enonbaptistchatham.org.uk/wp-content/uploads/2018/12/GMT-MST-Photo-1.jpg" class="vc_single_image-img attachment-large" alt="" srcset="https://enonbaptistchatham.org.uk/wp-content/uploads/2018/12/GMT-MST-Photo-1.jpg 446w, https://enonbaptistchatham.org.uk/wp-content/uploads/2018/12/GMT-MST-Photo-1-300x169.jpg 300w" sizes="(max-width: 446px) 100vw, 446px" /></a>
+			<a href="https://enonbaptistchatham.org.uk/wp-content/uploads/2018/12/GMT-MST-Photo-1.jpg" target="_self" class="vc_single_image-wrapper   vc_box_border_grey">
+                <img fetchpriority="high" decoding="async" width="446" height="251" src="https://enonbaptistchatham.org.uk/wp-content/uploads/2018/12/GMT-MST-Photo-1.jpg" class="re" alt="" srcset="https://enonbaptistchatham.org.uk/wp-content/uploads/2018/12/GMT-MST-Photo-1.jpg 446w, https://enonbaptistchatham.org.uk/wp-content/uploads/2018/12/GMT-MST-Photo-1-300x169.jpg 300w" sizes="(max-width: 446px) 100vw, 446px" />
+            </a>
 		</figure>
 	</div>
 </div></div></div></div><div class="vc_row wpb_row vc_row-fluid"><div class="wpb_column vc_column_container vc_col-sm-12"><div class="vc_column-inner"><div class="wpb_wrapper">
