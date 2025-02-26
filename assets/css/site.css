@@ -1,0 +1,62 @@
+:root {
+  --primary-color: #104268;
+  --secondary-color: #edd286;
+  --body-text-color: #000;
+  --nav-bar-bg-color: #61dafb;
+  --body-bf-color: #FFFF;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--body-bf-color);
+  }
+
+  .responsive-image {
+    width: 100%; /* Makes the image fill the width of its container */
+      height: auto;
+      max-height: 600px; /* Maintains the aspect ratio */
+      display: block; /* Removes extra spacing below the image */
+  }
+
+.App {
+    text-align: center;
+  }
+  
+  .App-logo {
+    height: 40vmin;
+    pointer-events: none;
+    
+  }
+  
+  @media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+      animation: App-logo-spin infinite 20s linear;
+    }
+  }
+  
+  .App-header {
+    background-color: var(--nav-bar-bg-color);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+  }
+  
+  .App-link {
+    color: var(--nav-bar-bg-color);
+  }
+  
+  @keyframes App-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  

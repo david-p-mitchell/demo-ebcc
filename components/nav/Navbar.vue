@@ -1,0 +1,122 @@
+<template>
+  <nav class="navbar">
+    <div class="navbar-container">
+      <NuxtLink to="/" class="navbar-link-home" @click="handleLinkClick">
+        <div class="navbar-logo">Enon Baptist Church</div>
+      </NuxtLink>
+      <button class="hamburger" @click="toggleMenu">
+        &#9776; <!-- Hamburger icon -->
+      </button>
+
+      <div :class="['navbar-menu', { active: isMenuOpen }]">
+        <ul class="navbar-list">
+          <!-- <AboutSection
+            :isOpen="activeDropdownIndex === 1"
+            :toggleDropdown="toggleDropdown"
+            :toggleMenu="toggleMenu"
+          /> -->
+
+          <DropdownMenu
+            title="About Us"
+            :links="aboutLinks"
+            :isOpen="activeDropdownIndex === 1"
+            :toggleDropdown="() => toggleDropdown(1)"
+            :toggleMenu="toggleMenu"
+          />
+
+          <DropdownMenu
+            title="What's On"
+            :links="eventLinks"
+            :isOpen="activeDropdownIndex === 2"
+            :toggleDropdown="() => toggleDropdown(2)"
+            :toggleMenu="toggleMenu"
+          />
+
+          
+
+          <li class="navbar-item">
+            <NuxtLink to="/sermons" class="navbar-link-top" @click="handleLinkClick">Sermons</NuxtLink>
+          </li>
+
+          <DropdownMenu
+            title="What is a Christian?"
+            :links="christianLinks"
+            :isOpen="activeDropdownIndex === 3"
+            :toggleDropdown="() => toggleDropdown(3)"
+            :toggleMenu="toggleMenu"
+          />
+
+          <li class="navbar-item">
+            <NuxtLink to="/contact/contact-us" class="navbar-link-top" @click="handleLinkClick">Contact</NuxtLink>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</template>
+
+<script setup>
+import { ref, onMounted, onBeforeUnmount } from 'vue';
+import DropdownMenu from '@/components/nav/DropdownMenu.vue';
+import AboutSection from './sections/AboutSection.vue';
+
+const isMenuOpen = ref(false);
+const activeDropdownIndex = ref(null);
+
+const toggleMenu = () => {
+  isMenuOpen.value = !isMenuOpen.value;
+  activeDropdownIndex.value = null; // Close all dropdowns when the menu is toggled
+};
+
+const toggleDropdown = (index) => {
+  activeDropdownIndex.value = activeDropdownIndex.value === index ? null : index;
+};
+
+const handleLinkClick = () => {
+  isMenuOpen.value = false;
+  activeDropdownIndex.value = null;
+};
+
+const aboutLinks = [
+  { to: "/about/what-we-believe", label: "What We Believe" },
+  { to: "/about/church-history", label: "Church History" },
+  { to: "/about/pastors-message", label: "Pastor's Message" },
+];
+
+const eventLinks = [
+  { to: "/whats-on/sunday-services", label: "Sunday Services" },
+  { to: "/whats-on/bible-study", label: "Bible Study" },
+  { to: "/whats-on/womens-meetings", label: "Women's Meetings" },
+  { to: "/whats-on/online-prayer-meeting", label: "Online Prayer Meeting" },
+  { to: "/whats-on/mens-meetings", label: "Men's Meetings" },
+  { to: "/whats-on/youth", label: "Discoverers" },
+  { to: "/whats-on/children", label: "Children" },
+];
+
+const christianLinks = [
+{ to: "/what-is-a-christian/becoming-a-christian", label: "Becoming a Christian" },
+{ to: "/what-is-a-christian/stop-trying-and-start-trusting", label: "Stop Trying and Start Trusting" },
+]
+
+const handleClickOutside = (event) => {
+  const menuElement = document.querySelector('.navbar-menu');
+  const hamburgerButton = document.querySelector('.hamburger');
+
+  if (!menuElement.contains(event.target) && !hamburgerButton.contains(event.target)) {
+    activeDropdownIndex.value = null;
+    isMenuOpen.value = false;
+  }
+};
+
+onMounted(() => {
+  document.addEventListener('click', handleClickOutside);
+});
+
+onBeforeUnmount(() => {
+  document.removeEventListener('click', handleClickOutside);
+});
+</script>
+
+<style scoped>
+@import "./Navbar.css";
+</style>

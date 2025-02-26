@@ -1,43 +1,17 @@
 {
-  "name": "david-p-mitchell.github.io",
-  "homepage": "https://david-p-mitchell.github.io/",
-  "version": "0.1.0",
+  "name": "nuxt-app",
   "private": true,
-  "dependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "cra-template": "1.2.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "react-router-dom": "^7.1.2",
-    "react-scripts": "^5.0.1",
-    "web-vitals": "^4.2.4"
-  },
+  "type": "module",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-    
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "gh-pages": "^6.3.0"
+  "dependencies": {
+    "nuxt": "^3.15.4",
+    "vue": "latest",
+    "vue-router": "latest"
   }
 }
