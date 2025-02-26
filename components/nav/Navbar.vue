@@ -46,6 +46,14 @@
             :toggleMenu="toggleMenu"
           />
 
+          <DropdownMenu
+            title="Testimonies"
+            :links="testimonyLinks"
+            :isOpen="activeDropdownIndex === 4"
+            :toggleDropdown="() => toggleDropdown(4)"
+            :toggleMenu="toggleMenu"
+          />
+
           <li class="navbar-item">
             <NuxtLink to="/contact/contact-us" class="navbar-link-top" @click="handleLinkClick">Contact</NuxtLink>
           </li>
@@ -94,8 +102,12 @@ const eventLinks = [
 ];
 
 const christianLinks = [
-{ to: "/what-is-a-christian/becoming-a-christian", label: "Becoming a Christian" },
-{ to: "/what-is-a-christian/stop-trying-and-start-trusting", label: "Stop Trying and Start Trusting" },
+  { to: "/what-is-a-christian/becoming-a-christian", label: "Becoming a Christian" },
+  { to: "/what-is-a-christian/stop-trying-and-start-trusting", label: "Stop Trying and Start Trusting" },
+]
+const testimonyLinks = [
+  { to: "/testimonies/", label: "Graham Trice" },
+  
 ]
 
 const handleClickOutside = (event) => {
