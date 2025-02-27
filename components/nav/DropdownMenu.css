@@ -2,13 +2,21 @@
     position: relative;
     
   }
+  .dropdown-item {
+    display:flex;
+  }
   .dropdown:hover{
     border: 2px solid #001891;
     border-width: 0 0 2px 0; /* for top, right, bottom, left */
   }
 .navbar-item.dropdown{
   cursor: pointer;
-  margin: 0rem 4px;
+  margin: 0rem 5px;
+  
+}
+
+.navbar-top {
+  margin:0;
 }
   
   .dropdown-menu {
