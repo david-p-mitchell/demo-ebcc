@@ -1,6 +1,6 @@
 <template>
   <li class="navbar-item dropdown">
-    <div class="dropdown-title navbar-link-top" @click="dropdown">
+    <div class="" @click="dropdown">
       {{ title }} <span class="dropdown-icon">{{ isOpen ? '▲' : '▼' }}</span>
     </div>
     <ul :class="['dropdown-menu', { active: isOpen }]">

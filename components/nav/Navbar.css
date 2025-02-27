@@ -2,7 +2,7 @@
 .navbar {
     background-color: var(--nav-bar-bg-color);
     color: var(--body-text-color);
-    padding: 5px 20px;
+    padding: 5px 20px 5px 20px;
     position: relative;
     z-index: 10; /* Ensure it appears above content */
     text-decoration: none;
@@ -68,40 +68,26 @@
   .navbar-link-top {
     text-decoration: none;
     color: var(--body-text-color);
-    display: block;
     transition: background-color 0.1s ease;
     cursor: pointer;
-    margin: 0rem 1.5rem;
-    list-style: none;
-    padding: 0;
+    margin: 0rem 0.25rem 0rem 0.25rem;
     display: flex;
     flex-direction: row;
+    
   }
   
-  .navbar-list .navbar-link {
-    text-decoration: none;
-    color: var(--body-text-color);
-    display: block;
-    transition: background-color 0.1s ease;
+  .navbar-link-top:hover {
+    border: 2px solid transparent;  /* Set all borders to transparent */
+    border-bottom: 2px solid #001891; /* Apply a solid bottom border */
+    
   }
-
-  .navbar-list .navbar-link-home {
-    text-decoration: none;
-    color: var(--body-text-color);
-    padding: 10px;
-    display: block;
-    transition: background-color 0.1s ease;
-  }
+  
   .navbar-link-home {
     text-decoration: none;
     color: var(--body-text-color);
   }
+
   
-  .navbar-list .navbar-link:hover {
-    background-color: #edd286;
-    border-radius: 5px;
-    cursor: pointer;
-  }
   
   /* Dropdown Menu */
   

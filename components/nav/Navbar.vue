@@ -34,10 +34,10 @@
 
           
 
-          <li class="navbar-item">
+          <li class="navbar-item-top">
             <NuxtLink to="/sermons" class="navbar-link-top" @click="handleLinkClick">Sermons</NuxtLink>
           </li>
-
+          
           <DropdownMenu
             title="What is a Christian?"
             :links="christianLinks"
@@ -54,8 +54,8 @@
             :toggleMenu="toggleMenu"
           />
 
-          <li class="navbar-item">
-            <NuxtLink to="/contact/contact-us" class="navbar-link-top" @click="handleLinkClick">Contact</NuxtLink>
+          <li class="navbar-item-top">
+            <NuxtLink to="/contact/contact-us" class="navbar-link-top" @click="handleLinkClick">Contact Us</NuxtLink>
           </li>
         </ul>
       </div>
