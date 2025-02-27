@@ -1,9 +1,7 @@
 <template>
     <div class="footer">
-        <p class="left-align-section">© Enon Baptist Church</p>
-        <div class="right-align-section">
-        <p >2025</p>
-    </div>
+        <p class="left-align-section">© Enon Baptist Church 2025</p>
+        
     </div>
 </template>
 
@@ -14,7 +12,9 @@
     padding: 0px;
     display: flex;
     flex-direction: row; /* Horizontal layout for desktop */
-    
+  
+  height: 25px; /* Adjust for your footer height */
+
 }
 
 .left-align-section {

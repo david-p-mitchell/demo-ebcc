@@ -4,8 +4,11 @@ import '@/assets/css/site.css';
 
 <template>
   <div class="app-container">
+    
     <Navbar />
-    <NuxtPage />
+    <div class="content">
+      <NuxtPage />
+    </div>
     <Footer />
   </div>
 </template>
