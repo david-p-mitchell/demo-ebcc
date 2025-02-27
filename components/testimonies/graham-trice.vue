@@ -2,7 +2,7 @@
     <article class="edenPageContent">
         <h1>Graham Trice</h1>
         <div>
-            <figure class="wpb_wrapper vc_figure">
+            <figure>
                 <a href="https://enonbaptistchatham.org.uk/wp-content/uploads/2018/12/GMT-MST-Photo-1.jpg" target="_self" class="vc_single_image-wrapper vc_box_border_grey">
                     <img 
                         fetchpriority="high" 
