@@ -1,10 +1,15 @@
 <template>
-  <li class="navbar-item dropdown">
-    <div class="" @click="dropdown">
-      {{ title }} <span class="dropdown-icon">{{ isOpen ? '▲' : '▼' }}</span>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <li class="navbar-item dropdown" @mouseenter="dropdown" @mouseleave="dropdown">
+    <div class="dropdown-item " >
+      <a v-if="dropdownComponent.hasSectionLink()" :href="dropdownComponent.sectionLink">
+        <p class="navbar-top">{{ dropdownComponent.title }}</p>
+      </a>
+      <p v-else class="navbar-top">{{ dropdownComponent.title }}</p>
+      <i @click="dropdown"  class="material-icons">keyboard_arrow_down</i>
     </div>
     <ul :class="['dropdown-menu', { active: isOpen }]">
-      <li v-for="(link, index) in links" :key="index" class="dropdown-list-items">
+      <li v-for="(link, index) in dropdownComponent.getLinks()" :key="index" class="dropdown-list-items">
         <NuxtLink :to="link.to" class="navbar-link" @click="onSubMenuLinkClicked">
           {{ link.label }}
         </NuxtLink>
@@ -14,10 +19,11 @@
 </template>
 
 <script>
+import { DropDownItemComponent } from '@/types/DropDownItemComponent.ts';
+
 export default {
   props: {
-    title: String,
-    links: Array,
+    dropdownComponent: { type: DropDownItemComponent, required: true},
     isOpen: Boolean,
     toggleDropdown: Function,
     toggleMenu: Function

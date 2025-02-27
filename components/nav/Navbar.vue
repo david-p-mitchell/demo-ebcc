@@ -17,38 +17,32 @@
           /> -->
 
           <DropdownMenu
-            title="About Us"
-            :links="aboutLinks"
+            :dropdownComponent="aboutDropDownComponent"
             :isOpen="activeDropdownIndex === 1"
             :toggleDropdown="() => toggleDropdown(1)"
             :toggleMenu="toggleMenu"
           />
 
           <DropdownMenu
-            title="What's On"
-            :links="eventLinks"
+            :dropdownComponent="eventDropDownComponent"
             :isOpen="activeDropdownIndex === 2"
             :toggleDropdown="() => toggleDropdown(2)"
             :toggleMenu="toggleMenu"
           />
-
-          
 
           <li class="navbar-item-top">
             <NuxtLink to="/sermons" class="navbar-link-top" @click="handleLinkClick">Sermons</NuxtLink>
           </li>
           
           <DropdownMenu
-            title="What is a Christian?"
-            :links="christianLinks"
+            :dropdownComponent="christianDropDownComponent"
             :isOpen="activeDropdownIndex === 3"
             :toggleDropdown="() => toggleDropdown(3)"
             :toggleMenu="toggleMenu"
           />
 
           <DropdownMenu
-            title="Testimonies"
-            :links="testimonyLinks"
+            :dropdownComponent="testimonyDropDownComponent"
             :isOpen="activeDropdownIndex === 4"
             :toggleDropdown="() => toggleDropdown(4)"
             :toggleMenu="toggleMenu"
@@ -66,7 +60,8 @@
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue';
 import DropdownMenu from '@/components/nav/DropdownMenu.vue';
-import AboutSection from './sections/AboutSection.vue';
+import { DropDownItemComponent } from '~/types/DropDownItemComponent';
+import { Link } from '~/types/Link';
 
 const isMenuOpen = ref(false);
 const activeDropdownIndex = ref(null);
@@ -85,13 +80,14 @@ const handleLinkClick = () => {
   activeDropdownIndex.value = null;
 };
 
-const aboutLinks = [
-  { to: "/about/what-we-believe", label: "What We Believe" },
-  { to: "/about/church-history", label: "Church History" },
-  { to: "/about/pastors-message", label: "Pastor's Message" },
-];
+const aboutDropDownComponent = new DropDownItemComponent('About Us',[
+  new Link("/about/what-we-believe","What We Believe"),
+  new Link("/about/church-history", "Church History" ),
+  new Link("/about/pastors-message", "Pastor's Message" ),
+],null);
 
-const eventLinks = [
+const eventDropDownComponent= new DropDownItemComponent('What\'s on',
+[
   { to: "/whats-on/sunday-services", label: "Sunday Services" },
   { to: "/whats-on/bible-study", label: "Bible Study" },
   { to: "/whats-on/womens-meetings", label: "Women's Meetings" },
@@ -99,16 +95,17 @@ const eventLinks = [
   { to: "/whats-on/mens-meetings", label: "Men's Meetings" },
   { to: "/whats-on/youth", label: "Discoverers" },
   { to: "/whats-on/children", label: "Children" },
-];
+],"/whats-on");
 
-const christianLinks = [
+const christianDropDownComponent= new DropDownItemComponent('What Is A Christian?',
+[
   { to: "/what-is-a-christian/becoming-a-christian", label: "Becoming a Christian" },
-  { to: "/what-is-a-christian/stop-trying-and-start-trusting", label: "Stop Trying and Start Trusting" },
-]
-const testimonyLinks = [
-  { to: "/testimonies/", label: "Graham Trice" },
-  
-]
+  { to: "/what-is-a-christian/stop-trying-and-start-trusting", label: "Stop Trying and Start Trusting" }
+],"/what-is-a-christian/becoming-a-christian");
+
+const testimonyDropDownComponent = new DropDownItemComponent('Testimonies',
+[{ to: "/testimonies/", label: "Graham Trice" }],"/testimonies/");
+
 
 const handleClickOutside = (event) => {
   const menuElement = document.querySelector('.navbar-menu');
