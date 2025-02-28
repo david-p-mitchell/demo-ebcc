@@ -1,3 +1,3 @@
 <template>
-  <img fetchpriority="high" src="/static/enonChurch.png" alt="Enon Baptist Church" class="responsive-image"  />
+  <img fetchpriority="high" src="/static/enonChurch.webp" alt="Enon Baptist Church" class="responsive-image"  />
 </template>
