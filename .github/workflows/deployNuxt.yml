@@ -3,10 +3,11 @@ name: Deploy Nuxt to GitHub Pages
 on:
   push:
     branches:
-      - nuxt-migration
+      - nuxt-migration  # Runs on push to main
+  workflow_dispatch:  # Allows manual triggering
 
 permissions:
-  contents: write
+  contents: write  # Required to deploy to GitHub Pages
 
 jobs:
   deploy:
@@ -16,19 +17,23 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18
+          cache: 'npm'  # Change to 'yarn' or 'pnpm' if used
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci  # Or `yarn install` / `pnpm install`
 
-      - name: Build project
-        run: npm run generate
+      - name: Build Nuxt site
+        run: npm run generate  # Generates static files
+
+      - name: Configure GitHub Pages
+        run: echo 'david-p-mitchell.github.io' > ./dist/CNAME  # Optional if using a custom domain
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+          branch: gh-pages
+          folder: .output/public  # Ensure this matches the Nuxt output folder
