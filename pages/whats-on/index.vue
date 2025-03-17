@@ -12,13 +12,13 @@
                 9.45am &#8211;  
                     <NuxtLink to="/whats-on/children/">Sunday Club</NuxtLink> (for children aged 4 to 15)<br />
                 11.15am &#8211; 
-                    <NuxtLink to="/whats-on/sunday-morning"> Morning Worship</NuxtLink><br />
-                6.00 pm &#8211; <NuxtLink to="/whats-on/sunday-prayer">Prayer Time</NuxtLink><br />
-                6.30pm &#8211; <NuxtLink to="/whats-on/sunday-evening">Evening Worship</NuxtLink>
+                    <NuxtLink to="/whats-on/sunday-morning/"> Morning Worship</NuxtLink><br />
+                6.00 pm &#8211; <NuxtLink to="/whats-on/sunday-prayer/">Prayer Time</NuxtLink><br />
+                6.30pm &#8211; <NuxtLink to="/whats-on/sunday-evening/">Evening Worship</NuxtLink>
             </p>
             <p>
                 <strong>Wednesday</strong><br />
-                7.30pm &#8211;  <NuxtLink to="/whats-on/bible-study">Bible Study and Prayer Meeting</NuxtLink>
+                7.30pm &#8211;  <NuxtLink to="/whats-on/bible-study/">Bible Study and Prayer Meeting</NuxtLink>
             </p>
             <p>
                 <strong>Thursday</strong><br />
