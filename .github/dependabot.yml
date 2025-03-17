@@ -1,0 +1,17 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 10
+    ignore:
+      - dependency-name: "nuxt"
+        versions: ["^3.0.0"]
+    reviewers:
+      - "david-p-mitchell"
+    assignees:
+      - "david-p-mitchell"
+    labels:
+      - "dependencies"
+      - "npm"

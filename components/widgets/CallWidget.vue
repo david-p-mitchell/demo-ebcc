@@ -10,7 +10,7 @@ export default {
     },
     methods: {
         callNumber(){
-            
+            //window.location.href = "tel:" + atob("KzQ0MTYzNDMwMTQ5OQ=="); 
         }
     }
 }
