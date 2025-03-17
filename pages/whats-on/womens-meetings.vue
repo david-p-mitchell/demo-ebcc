@@ -1,0 +1,16 @@
+<script>
+import CallWidget from '~/components/widgets/CallWidget.vue';
+
+export default {
+    components:{
+        CallWidget
+    }
+}
+</script>
+
+<template>
+    <h1>Men's Meetings</h1>
+    <p>Ladies Meeting – 1st and 3rd Thursday each month at 1.45pm </p>
+    <p>Monthly Bible Study on Wednesdays – please <CallWidget text = "ring"/> for details  </p>
+
+</template>

@@ -1,0 +1,101 @@
+.dropdown {
+    position: relative;
+    
+  }
+  .dropdown-item {
+    display:flex;
+  }
+  .dropdown:hover{
+    border: 2px solid #001891;
+    border-width: 0 0 2px 0; /* for top, right, bottom, left */
+  }
+.navbar-item.dropdown{
+  cursor: pointer;
+  margin: 0rem 5px;
+  
+}
+
+.navbar-top {
+  margin:0;
+}
+  
+  .dropdown-menu {
+    display: none;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background-color: #84c4f4;
+    border-radius: 4px;
+    position: absolute;
+    top: 100%; /* Position below the dropdown toggle */
+    left: 0;
+    min-width: 200px;
+    z-index: 5;
+    cursor: pointer;
+  }
+  
+  .dropdown-menu.active {
+    display: block; /* Show when active */
+  }
+  
+  .dropdown-menu li {
+    text-decoration: none;
+    color: black;
+    display: block;
+    margin: 0.25rem 0.25rem;
+    padding: 0.5rem 0rem;
+  }
+  
+  .dropdown-menu li:last-child {
+    border-bottom: none;
+  }
+  
+  .dropdown-menu .navbar-link {
+    /* padding: 10px 15px; */
+    text-align: left;
+    
+  }
+  
+  .dropdown-list-items a {
+    text-decoration: none;
+    color: black;
+    display: block;
+  }
+
+  .dropdown-menu .dropdown-list-items:hover {
+    text-decoration: none;
+    color: black;
+    display: block;
+    border: 2px solid #001891;
+    border-width: 0 0 2px 0; /* for top, right, bottom, left */
+    
+  }
+
+@media (max-width: 768px) {
+    .dropdown-menu {
+      position: static; /* No absolute positioning for mobile */
+      background-color: transparent; /* Match background */
+    }
+
+    .navbar-list  {
+      text-decoration: none;
+      color: black;
+      display: block;
+      margin: 0.25rem 0.25rem;
+      padding: 0.5rem 0rem;
+    }
+
+    .navbar-link-top {
+      margin: 0.5rem 0rem 0.25rem 0rem;
+      padding: 0.25rem 0rem 0.25rem 0;
+    }
+
+    .navbar-link {
+      margin: 0.25rem 1rem;
+    }
+
+    .dropdown-icon {
+      justify-content: flex-end;
+      
+    }
+  }
