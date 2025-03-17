@@ -3,10 +3,9 @@
   <!-- <img fetchpriority="high" src="/static/enonChurch.webp" alt="Enon Baptist Church" class="responsive-image"  /> -->
   
 </template>
+
 <script setup>
 import { ref, nextTick, onMounted } from 'vue';
-
-const imageRendered = ref(false);
 const imageRef = ref(null);
 const emit = defineEmits(['imageRendered']); // Define the custom event
 
