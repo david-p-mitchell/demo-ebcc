@@ -4,8 +4,8 @@ import '@/assets/css/site.css';
 
 <template>
   <div class="app-container">
+    <NavigationHeader />
     
-    <Navbar />
     <div class="content">
       <NuxtPage />
     </div>
@@ -16,6 +16,7 @@ import '@/assets/css/site.css';
 <script>
 import Navbar from '../components/nav/Navbar.vue';
 import Footer from '../components/Footer.vue';
+import NavigationHeader from './components/nav/NavigationHeader.vue';
 
 export default {
   components: {
