@@ -1,0 +1,30 @@
+<template>
+    <div class="sunday-evening">
+      <NuxtLink to="/whats-on/sunday-evening" class="sunday-evening box-title">
+        <EventsCalendarEventComponent :event="event" />
+      </NuxtLink>
+    </div>
+</template>
+<script setup lang="ts">
+import { defineProps } from 'vue';
+import type { CalendarEvent } from '~/types/CalendarEvent';
+const props = defineProps<{ event: CalendarEvent }>();
+</script>
+
+<style>
+.sunday-evening {
+  background-color: #A1F0D6;
+  border-radius: 18px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  text-decoration: none; 
+}
+.sunday-evening:hover {
+  background-color:  #7AD1B6;
+  text-decoration: none; 
+}
+
+
+
+
+</style>

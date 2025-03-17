@@ -6,14 +6,14 @@ export class GoogleCalendar {
     private cacheTimestampKey: string = "googleCalendarCacheTimestamp";
     private calendarId: string;
     private apiKey: string;
-    private maxResults: number = 5; // Limit to 5 events
+    
 
     constructor(config: ReturnType<typeof useRuntimeConfig>) {
         this.calendarId = config.public.googleCalendarId + "@group.calendar.google.com";
         this.apiKey = config.public.googleCalendarApiKey as string;
     }
 
-    async getEvents(): Promise<CalendarEvent[]> {
+    async getEvents(number : number): Promise<CalendarEvent[]> {
         const cachedEvents = this.getCachedEvents();
         
         if (cachedEvents) {
@@ -21,19 +21,51 @@ export class GoogleCalendar {
             return cachedEvents;
           }
 
-        return this.getGoogleEvents();
+        return this.getGoogleEvents(number);
     }
 
-    private async getGoogleEvents() {
-        const url = `https://www.googleapis.com/calendar/v3/calendars/${this.calendarId}/events?key=${this.apiKey}&maxResults=${this.maxResults}`;
+    private async getGoogleEvents(number : number) {
+      const today = new Date().toISOString();
+      const url = `https://www.googleapis.com/calendar/v3/calendars/${this.calendarId}/events?key=${this.apiKey}&maxResults=${number}&orderBy=startTime&singleEvents=true&timeMin=${encodeURIComponent(today)}`;
+      
 
         try {
             const response = await fetch(url);
             const data = await response.json();
-            const fetchedEvents = data.items.map((item: any) => ({
+            const fetchedNonCancelledEvents = data.items.filter((item: any) => item.status !== 'cancelled');
+            const fetchedEvents = fetchedNonCancelledEvents.filter((currentEvent: CalendarEvent, _: number, allEvents: CalendarEvent[]) => {
+              return allEvents.every(existingEvent => {
+                if (existingEvent === currentEvent) return true;
+
+                const [existingRootId] = existingEvent.id.split('_');
+                const [currentRootId] = currentEvent.id.split('_');
+
+                // Keep events from different groups
+                if (existingRootId !== currentRootId) return true;
+
+                // Check if all fields (except description) are the same
+                const isOtherwiseIdentical =
+                  currentEvent.summary === existingEvent.summary &&
+                  currentEvent.start === existingEvent.start &&
+                  currentEvent.end === existingEvent.end &&
+                  currentEvent.location === existingEvent.location;
+
+                // If they're identical but one has a description, prefer the one with a description
+                if (isOtherwiseIdentical) {
+                  return existingEvent.description || !currentEvent.description;
+                }
+
+                // If they're not identical, keep both
+                return true;
+              });
+            }).map((item: any) => ({
                 id: item.id,
                 summary: item.summary,
                 start: item.start,
+                end: item.end,
+                location: item.location,
+                description: item.description
+
               }));
 
               fetchedEvents.sort((a:CalendarEvent, b:CalendarEvent) => {
