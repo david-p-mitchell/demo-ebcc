@@ -13,10 +13,13 @@ export default defineNuxtConfig({
       link: [
         { rel: 'icon',type: 'image/x-icon', href: '/ebc-logo.ico' },  // For higher resolution displays
         { rel: 'preload', href: '/images/enonChurch.webp', as: 'image' },
-      ]
+      ],
+      baseURL: '/david-p-mitchell.github.io/', // Important for GitHub Pages
     }
   },
-
+  nitro: {
+    preset: 'static', // Enables SSG
+  },
   runtimeConfig: {
     public: {
       googleCalendarApiKey: process.env.NUXT_PUBLIC_GOOGLE_CALENDAR_API_KEY,
