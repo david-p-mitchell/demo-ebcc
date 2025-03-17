@@ -17,8 +17,8 @@
 </template>
 
 <script setup lang="ts">
-import CalendarEventsComponent from '~/components/events/CalendarEventsComponent.vue';
-import ChurchImage from '~/components/ChurchImage.vue'
+import CalendarEventsComponent from '../components/events/CalendarEventsComponent.vue';
+import ChurchImage from '../components/ChurchImage.vue'
 
 import { ref } from 'vue';
 const imageRendered = ref(false);
@@ -27,8 +27,5 @@ const onImageRendered = () => {
   imageRendered.value = true; // Update state
 };
 
-onMounted(() => {
-  imageRendered.value = true;
-});
 </script>
 

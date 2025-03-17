@@ -12,7 +12,7 @@
       </div>
     </div>
 </article>
-</template>
+</template> 
 
 <script>
 export default {
