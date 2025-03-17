@@ -3,7 +3,7 @@ name: Deploy Nuxt to GitHub Pages
 on:
   push:
     branches:
-      - main  # Runs on push to main
+      - nuxt-migration  # Runs on push to main
   workflow_dispatch:  # Allows manual triggering
 
 permissions:
