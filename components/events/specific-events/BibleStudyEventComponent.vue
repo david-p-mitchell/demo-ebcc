@@ -1,13 +1,13 @@
 <template>
     <div class="bible-study">
-        <NuxtLink to="/whats-on/bible-study/" class="bible-study box-title">
+        <NuxtLink prefetch to="/whats-on/bible-study/" class="bible-study box-title">
     <EventsCalendarEventComponent :event="event" />
         </NuxtLink>
     </div>
 </template>
 <script setup lang="ts">
 import { defineProps } from 'vue';
-import type { CalendarEvent } from '~/types/CalendarEvent';
+import type { CalendarEvent } from '../../../types/CalendarEvent';
 const props = defineProps<{ event: CalendarEvent }>();
 </script>
 

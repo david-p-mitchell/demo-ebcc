@@ -21,17 +21,18 @@
 
 <script setup lang="ts">
 // Import Vue functions
-import { ref, onMounted } from 'vue'
-import { GoogleCalendar } from '~/apis/googleCal'
+import { ref, onMounted } from 'vue';
+import { GoogleCalendar } from '../../apis/googleCal';
 
 // Import the Event type
-import type { CalendarEvent } from '~/types/CalendarEvent';
+import type { CalendarEvent } from '../../types/CalendarEvent';
 import SundayMorningComponent from './specific-events/SundayMorningEventComponent.vue';
 import SundayEveningComponent from './specific-events/SundayEveningEventComponent.vue';
 import BibleStudyEventComponent from './specific-events/BibleStudyEventComponent.vue';
 import CalendarEventComponent from './CalendarEventComponent.vue';
 import SundayPrayerEventComponent from './specific-events/SundayPrayerEventComponent.vue';
 import SundayClubEventComponent from './specific-events/SundayClubEventComponent.vue';
+import { useRuntimeConfig } from 'nuxt/app';
 const events = ref<CalendarEvent[]>([]);  // Store events in a ref properly
 
 

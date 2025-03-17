@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - nuxt-migration  # Runs on push to main
+      - main  # Runs on push to main
   workflow_dispatch:  # Allows manual triggering
 
 permissions:

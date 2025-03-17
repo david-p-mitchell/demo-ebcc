@@ -2,7 +2,7 @@
 <template>
     <header ref="header" class="header">
       <div class="header-left">
-        <NuxtLink to="/" class="home-link">Enon Baptist Church</NuxtLink>
+        <NuxtLink prefetch to="/" class="home-link">Enon Baptist Church</NuxtLink>
       </div>
       <div class="burger-menu">
         <button class="burger-button" @click="toggleMenu">
@@ -18,11 +18,11 @@
                 </a>
                 <ul v-show="openSubmenu === index || isDesktop" class="submenu">
                   <li v-for="(subItem, subIndex) in item.submenu" :key="subIndex">
-                    <NuxtLink :to="subItem.link" @click="closeMenu">{{ subItem.title }}</NuxtLink>
+                    <NuxtLink prefetch :to="subItem.link" @click="closeMenu">{{ subItem.title }}</NuxtLink>
                   </li>
                 </ul>
               </template>
-              <NuxtLink v-else :to="item.link" @click="closeMenu">{{ item.title }}</NuxtLink>
+              <NuxtLink prefetch v-else :to="item.link" @click="closeMenu">{{ item.title }}</NuxtLink>
             </li>
           </ul>
         </nav>
@@ -32,8 +32,8 @@
   
   <script lang="ts">
   import { defineComponent, ref, onMounted, onUnmounted } from 'vue'
-  import type { NavItem } from '@/types/NavItem'
-  import navItems from '~/components/nav/sections/NavigationLinks'
+  import type { NavItem } from '../../types/NavItem'
+  import navItems from './NavigationLinks'
   
   export default defineComponent({
     setup() {
