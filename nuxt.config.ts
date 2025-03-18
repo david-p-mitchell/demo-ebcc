@@ -16,7 +16,6 @@ export default defineNuxtConfig({
       ],
       link: [
         { rel: 'icon',type: 'image/x-icon', href: '/ebc-logo.ico' },  // For higher resolution displays
-        { rel: 'preload', href: '/images/enonChurch.webp', as: 'image' },
       ],
       baseURL: '/david-p-mitchell.github.io/', // Important for GitHub Pages
       htmlAttrs: {
