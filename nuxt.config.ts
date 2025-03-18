@@ -4,6 +4,9 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
   modules: ['@nuxt/image'],
+  alias: {
+    '@': './',
+  },
   app: {
     head: {
       title: 'Enon Baptist Church',
@@ -16,7 +19,11 @@ export default defineNuxtConfig({
         { rel: 'preload', href: '/images/enonChurch.webp', as: 'image' },
       ],
       baseURL: '/david-p-mitchell.github.io/', // Important for GitHub Pages
-    }
+      htmlAttrs: {
+        lang: 'en'
+      }
+    },
+    pageTransition: { name: 'page', mode: 'out-in' }
   },
   nitro: {
     preset: 'static', // Enables SSG
@@ -29,5 +36,18 @@ export default defineNuxtConfig({
   },
   typescript: {
     shim: false,
+  },
+  vite: {
+    build: {
+      minify: 'esbuild',  // Minify JavaScript using esbuild
+      terserOptions: {
+        compress: {
+          drop_console: true,  // Remove console.log and other debug output
+        },
+        mangle: {
+          toplevel: true,  // Enable mangling of top-level variable names
+        },
+      },
+    },
   },
 })

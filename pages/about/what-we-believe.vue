@@ -28,7 +28,7 @@ export default {
         { title: "The Church", content: "The true church is the innumerable company of God’s people in every age, chosen by Him before the world began. The local church is made up of those who have covenanted together in a visible bond of love and fellowship. The ordinances of baptism and the Lord’s Supper belong in the context of the local church. By their meaning and teaching of Scripture it is clear that before partaking of the Lord’s Supper, converts should identify themselves with the Lord Jesus and His people in Baptism." },
         { title: "The Last Things", content: "At a time known only to God, the Lord Jesus Christ will return to this earth in glory to raise the dead, both righteous and unrighteous, and to judge all mankind. The wicked will go away into everlasting punishment, and the righteous into eternal life." }
       ]
-    }
+    }                                                                                            
   },
   methods: {
     formatContent(content) {

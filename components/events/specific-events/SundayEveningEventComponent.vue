@@ -6,7 +6,7 @@
     </div>
 </template>
 <script setup lang="ts">
-import { defineProps } from 'vue';
+
 import type { CalendarEvent } from '~/types/CalendarEvent';
 const props = defineProps<{ event: CalendarEvent }>();
 </script>
