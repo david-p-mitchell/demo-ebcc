@@ -1,4 +1,4 @@
-import type { NavItem } from "@/types/NavItem";
+import type { NavItem } from '@/types/NavItem';
 
 const aboutSection :NavItem =
 {
