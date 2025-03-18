@@ -29,8 +29,8 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      googleCalendarApiKey: process.env.NUXT_PUBLIC_GOOGLE_CALENDAR_API_KEY,
-      googleCalendarId: process.env.NUXT_PUBLIC_GOOGLE_CALENDAR_ID,
+      googleCalendarApiKey: process.env.GOOGLE_CALENDAR_API_KEY,
+      googleCalendarId: process.env.GOOGLE_CALENDARID,
     },
   },
   typescript: {

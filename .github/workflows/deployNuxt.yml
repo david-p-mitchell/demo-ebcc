@@ -26,8 +26,8 @@ jobs:
 
       - name: Create .env file
         run: |
-          echo "NUXT_PUBLIC_GOOGLE_CALENDAR_API_KEY=${{ secrets.NUXT_PUBLIC_GOOGLE_CALENDAR_API_KEY }}" >> .env
-          echo "NUXT_PUBLIC_GOOGLE_CALENDAR_ID=${{ secrets.NUXT_PUBLIC_GOOGLE_CALENDAR_ID }}" >> .env
+          echo "NUXT_PUBLIC_GOOGLE_CALENDAR_API_KEY=${{ secrets.GOOGLE_CALENDAR_API_KEY }}" >> .env
+          echo "NUXT_PUBLIC_GOOGLE_CALENDAR_ID=${{ secrets.GOOGLE_CALENDAR_ID }}" >> .env
 
       - name: Install dependencies
         run: npm ci
