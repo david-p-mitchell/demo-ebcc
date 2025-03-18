@@ -23,7 +23,7 @@
           const userLon = position.coords.longitude;
   
           // Create the Google Maps directions link with the precise location
-          const url = `https://www.google.com/maps/dir/?api=1&origin=${userLat},${userLon}&destination=${encodeURIComponent(location)}`;
+          const url = `https://www.google.com/maps/dir/?api=1&origin=Your+Location&destination=${encodeURIComponent(location)}`;
           window.open(url, '_blank');
         },
         (error) => {
