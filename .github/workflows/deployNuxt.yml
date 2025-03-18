@@ -3,12 +3,12 @@ name: Deploy Nuxt to GitHub Pages
 on:
   push:
     branches:
-      - nuxt-migration  # Runs on push to main
-      - main  # Runs on push to main
-  workflow_dispatch:  # Allows manual triggering
+      - nuxt-migration
+      - main
+  workflow_dispatch:
 
 permissions:
-  contents: write  # Required to deploy to GitHub Pages
+  contents: write
 
 jobs:
   deploy:
@@ -22,19 +22,24 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 18
-          cache: 'npm'  # Change to 'yarn' or 'pnpm' if used
+          cache: 'npm'
+
+      - name: Create .env file
+        run: |
+          echo "NUXT_PUBLIC_GOOGLE_CALENDAR_API_KEY=${{ secrets.NUXT_PUBLIC_GOOGLE_CALENDAR_API_KEY }}" >> .env
+          echo "NUXT_PUBLIC_GOOGLE_CALENDAR_ID=${{ secrets.NUXT_PUBLIC_GOOGLE_CALENDAR_ID }}" >> .env
 
       - name: Install dependencies
-        run: npm ci  # Or `yarn install` / `pnpm install`
+        run: npm ci
 
       - name: Build Nuxt site
-        run: npm run generate  # Generates static files
+        run: npm run generate
 
       - name: Configure GitHub Pages
-        run: echo 'david-p-mitchell.github.io' > ./dist/CNAME  # Optional if using a custom domain
+        run: echo 'david-p-mitchell.github.io' > ./dist/CNAME
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
-          folder: .output/public  # Ensure this matches the Nuxt output folder
+          folder: .output/public
