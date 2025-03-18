@@ -27,7 +27,7 @@ jobs:
       - name: Create .env file
         run: |
           echo "GOOGLE_CALENDAR_API_KEY=${{ secrets.GOOGLE_CALENDAR_API_KEY }}" >> .env
-          echo "GOOGLE_CALENDAR_ID=${{ secrets.GOOGLE_CALENDAR_ID }}" >> .env
+          echo "GOOGLE_CALENDARID=${{ secrets.GOOGLE_CALENDARID }}" >> .env
 
       - name: Install dependencies
         run: npm ci
