@@ -1,6 +1,13 @@
 <template>
-  <NuxtImg ref="imageRef"  src="/images/enonChurch.webp" alt="Enon Baptist Church" class="responsive-image" preload preset="churchwidth" />
+  <!-- <NuxtImg ref="imageRef"  src="/images/enonChurch.webp" alt="Enon Baptist Church" class="responsive-image" preload preset="churchwidth" /> -->
   <!-- <img fetchpriority="high" src="/static/enonChurch.webp" alt="Enon Baptist Church" class="responsive-image"  /> -->
+  <img
+  ref="imageRef"
+  src="/images/enonChurch.webp"
+  alt="Enon Baptist Church"
+  class="responsive-image"
+  loading="lazy"
+/>
   
 </template>
 
