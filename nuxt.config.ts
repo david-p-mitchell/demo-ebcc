@@ -9,7 +9,7 @@ export default defineNuxtConfig({
     '@': './',
   },
   image: {
-    provider: 'ipx'
+    provider: 'static'
   },
   app: {
     head: {
