@@ -35,9 +35,6 @@ export default defineNuxtConfig({
     },
     pageTransition: { name: 'page', mode: 'out-in' }
   },
-  nitro: {
-    preset: 'static', // Enables SSG
-  },
   runtimeConfig: {
     public: {
       googleCalendarApiKey: process.env.GOOGLE_CALENDAR_API_KEY,
