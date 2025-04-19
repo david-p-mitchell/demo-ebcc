@@ -9,15 +9,7 @@ export default defineNuxtConfig({
     '@': './',
   },
   image: {
-    provider: 'ipx', // this allows dynamic optimization via IPX
-    domains: [],
-    presets: {
-      churchwidth: {
-        modifiers: {
-          format: 'webp'
-        },
-      },
-    },
+    provider: 'ipx'
   },
   app: {
     head: {
