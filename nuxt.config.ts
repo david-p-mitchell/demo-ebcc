@@ -9,7 +9,7 @@ export default defineNuxtConfig({
     '@': './',
   },
   image: {
-    // No provider specified — default works fine for static image paths
+    provider: 'ipx', // this allows dynamic optimization via IPX
     presets: {
       churchwidth: {
         modifiers: {
