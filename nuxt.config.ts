@@ -8,6 +8,16 @@ export default defineNuxtConfig({
   alias: {
     '@': './',
   },
+  image: {
+    // No provider specified — default works fine for static image paths
+    presets: {
+      churchwidth: {
+        modifiers: {
+          format: 'webp'
+        },
+      },
+    },
+  },
   app: {
     head: {
       title: 'Enon Baptist Church',
