@@ -8,6 +8,18 @@ export default defineNuxtConfig({
   alias: {
     '@': './',
   },
+  image: {
+    provider: 'vercel',
+    screens: {
+      sm: 320,
+      md: 640,
+      lg: 1024,
+      xl: 1280,
+    },
+    domains: [
+      'enonbaptistchatham.org.uk',        // if pulling images from external sites
+    ]
+  },
   app: {
     head: {
       title: 'Enon Baptist Church',
