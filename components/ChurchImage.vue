@@ -1,12 +1,12 @@
 <template>
-  <NuxtImg
+  <!-- <NuxtImg
   ref="imageRef"
   src="/images/enonChurch.webp"
   alt="Enon Baptist Church"
   class="responsive-image"
   preload
-/>
-  <!-- <img fetchpriority="high" src="/static/enonChurch.webp" alt="Enon Baptist Church" class="responsive-image"  /> -->
+/> -->
+  <img fetchpriority="high" src="/images/enonChurch.webp" alt="Enon Baptist Church" class="responsive-image"  />
   
   
 </template>

@@ -8,9 +8,6 @@ export default defineNuxtConfig({
   alias: {
     '@': './',
   },
-  image: {
-    provider: 'ipx'
-  },
   app: {
     head: {
       title: 'Enon Baptist Church',
