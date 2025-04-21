@@ -12,7 +12,6 @@
         </p>
       </div>
       <CalendarEventsComponent />
-      <TestButton />
     </div>
   </div>
 </template>
@@ -22,7 +21,6 @@ import CalendarEventsComponent from '../components/events/CalendarEventsComponen
 import ChurchImage from '../components/ChurchImage.vue'
 
 import { ref } from 'vue';
-import TestButton from '~/components/TestButton.vue';
 const imageRendered = ref(false);
 
 const onImageRendered = () => {
