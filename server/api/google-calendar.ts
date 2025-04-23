@@ -3,8 +3,7 @@ import { useRuntimeConfig } from '#imports'
 import type { CalendarEvent } from '~/types/CalendarEvent'
 
 // In-memory cache
-let cache: CalendarEvent[] | null = null
-let cacheTimestamp: number | null = null
+let cache: Record<number, { data: CalendarEvent[]; timestamp: number }> = {};
 const cacheDuration = 300000 // 5 minutes (server cache)
 
 export default defineEventHandler(async (event) => {
@@ -16,10 +15,11 @@ export default defineEventHandler(async (event) => {
   const number = parseInt(getQuery(event).number as string || '10', 10);
   const now = Date.now();
   
-  // Use cached data if it's still fresh
-  if (cache && cacheTimestamp && now - cacheTimestamp < cacheDuration) {
+  // Check if there's cached data for the specific number and it's still fresh
+  const cached = cache[number];
+  if (cached && now - cached.timestamp < cacheDuration) {
     console.log('Using cached calendar events');
-    return cache;
+    return cached.data;
   }
 
   const today = new Date().toISOString();
@@ -31,7 +31,6 @@ export default defineEventHandler(async (event) => {
       throw new Error(`Google API returned status ${response.status}`);
     }
     
-
     const data = await response.json();
     
     const filtered = data.items.filter((item: any) => item.status !== 'cancelled' && new Date(item.end.dateTime ?? item.end.date ?? 0) > new Date());
@@ -72,9 +71,8 @@ export default defineEventHandler(async (event) => {
       return startA.getTime() - startB.getTime()
     });
 
-    // Cache the result
-    cache = deduped;
-    cacheTimestamp = now;
+    // Cache the result for the specific number
+    cache[number] = { data: deduped, timestamp: now };
 
     return deduped;
   } catch (err: any) {
