@@ -41,9 +41,7 @@ const events = ref<CalendarEvent[]>([]);  // Store events in a ref properly
 async function loadGoogle() {
   try {
       var count = useElementCount(300);
-      console.log(count.value);
       let s = '/api/google-calendar?number=' + count.value;
-      console.log(s);
       const data = await $fetch<CalendarEvent[]>('/api/google-calendar?number=' + count.value);
       events.value = data;
     } catch (error) {

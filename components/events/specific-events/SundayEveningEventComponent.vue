@@ -17,6 +17,7 @@ const props = defineProps<{ event: CalendarEvent }>();
   overflow: hidden;
   margin-bottom: 1rem;
   text-decoration: none; 
+  border-radius: 18px;
 }
 .sunday-evening:hover {
   background-color:  #7AD1B6;

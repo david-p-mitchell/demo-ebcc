@@ -10,7 +10,7 @@
     <div >
       
       <!-- <p class="more-info">More Information</p> -->
-       <div style="display: flex-end;"><DirectionsComponent :location="event.location" :text="text"  /></div>
+       <!-- <div style="display: flex-end;"><DirectionsComponent :location="event.location" :text="text"  /></div> -->
     
   </div>
   </div>
@@ -47,7 +47,11 @@ function getTime(dateString?: string): string {
   padding: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   width: 275px;
-  border-radius: 18px;
+  border-radius: 18px !important;
+}
+
+.event-box a {
+  border-radius: 18px
 }
 
 .event-box:hover {

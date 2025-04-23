@@ -17,7 +17,11 @@ const props = defineProps<{ event: CalendarEvent }>();
   overflow: hidden;
   text-decoration: none;
   color: #000;
+  border-radius: 18px !important;
 }
+
+
+
 .discoverers :hover {
   background-color:  #7AA8B8 !important;
   text-decoration: none;

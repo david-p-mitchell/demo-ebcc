@@ -17,6 +17,7 @@ const props = defineProps<{ event: CalendarEvent }>();
   overflow: hidden;
   color: #777;
   text-decoration: none; 
+  border-radius: 18px;
 }
 .sunday-club a {
   text-decoration: none; 
