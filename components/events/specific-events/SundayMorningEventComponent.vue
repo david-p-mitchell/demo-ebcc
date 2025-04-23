@@ -14,7 +14,6 @@ const props = defineProps<{ event: CalendarEvent }>();
 .sunday-morn {
   background-color: #e2e2cd;
   margin-bottom: 1rem;
-  border-radius: 18px;
   overflow: hidden;
   color: #777;
   text-decoration: none; 

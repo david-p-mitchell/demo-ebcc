@@ -14,7 +14,6 @@ const props = defineProps<{ event: CalendarEvent }>();
 .bible-study {
   background-color: #FFF3CD;
   margin-bottom: 1rem;
-  border-radius: 18px;
   overflow: hidden;
   text-decoration: none;
   color: #000;

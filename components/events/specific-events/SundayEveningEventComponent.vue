@@ -14,7 +14,6 @@ const props = defineProps<{ event: CalendarEvent }>();
 <style>
 .sunday-evening {
   background-color: #A1F0D6;
-  border-radius: 18px;
   overflow: hidden;
   margin-bottom: 1rem;
   text-decoration: none; 
