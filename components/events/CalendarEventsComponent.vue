@@ -1,7 +1,7 @@
 <template>
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
     <div v-if="events.length > 0">
-      <h2>Upcoming Events</h2>
+      <h2 class="event-underline">Upcoming Events</h2>
       <div class="event-container">
         <div v-for="event in events" :key="event.id" class="event-box-container">
           <div v-if="event.summary === 'Sunday Club'"><SundayClubEventComponent :event="event" /></div>
@@ -32,14 +32,19 @@ import CalendarEventComponent from './CalendarEventComponent.vue';
 import SundayPrayerEventComponent from './specific-events/SundayPrayerEventComponent.vue';
 import SundayClubEventComponent from './specific-events/SundayClubEventComponent.vue';
 import DiscoverersEventComponent from './specific-events/DiscoverersEventComponent.vue';
-import { useFetch, useRuntimeConfig } from 'nuxt/app';
+import { useElementCount } from '~/composables/useElementCount';
 const events = ref<CalendarEvent[]>([]);  // Store events in a ref properly
+
 
 
 // Function to fetch events
 async function loadGoogle() {
   try {
-      const data = await $fetch<CalendarEvent[]>('/api/google-calendar?number=4');
+      var count = useElementCount(300);
+      console.log(count.value);
+      let s = '/api/google-calendar?number=' + count.value;
+      console.log(s);
+      const data = await $fetch<CalendarEvent[]>('/api/google-calendar?number=' + count.value);
       events.value = data;
     } catch (error) {
       console.error('Failed to fetch events:', error);
@@ -61,6 +66,10 @@ onMounted(loadGoogle);
   flex-wrap: wrap;  /* Allow items to wrap when necessary */
   gap: 10px;        /* Space between items */
   justify-content: flex-start;  /* Align items to the left */
+}
+
+.event-underline {
+  border-bottom: 1px solid var(--nav-bar-bg-color);
 }
 
 
