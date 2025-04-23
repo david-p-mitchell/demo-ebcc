@@ -12,6 +12,7 @@
         </p>
       </div>
       <CalendarEventsComponent />
+      <Contact />
     </div>
   </div>
 </template>
@@ -19,6 +20,7 @@
 <script setup lang="ts">
 import CalendarEventsComponent from '../components/events/CalendarEventsComponent.vue';
 import ChurchImage from '../components/ChurchImage.vue'
+import Contact from '~/components/Contact.vue';
 
 import { ref } from 'vue';
 const imageRendered = ref(false);
