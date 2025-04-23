@@ -4,8 +4,7 @@ import '@/assets/css/site.css';
 
 <template>
   <div class="app-container">
-    
-    <Navbar />
+    <NavigationHeader />
     <div class="content">
       <NuxtPage />
     </div>
@@ -14,15 +13,28 @@ import '@/assets/css/site.css';
 </template>
 
 <script>
-import Navbar from '../components/nav/Navbar.vue';
+import NavigationHeader from './components/nav/NavigationHeader.vue';
 import Footer from '../components/Footer.vue';
 
 export default {
   components: {
-    Navbar
+    NavigationHeader,
+    Footer
   }
 }
 </script>
+
+<style>
+.page-enter-active,
+.page-leave-active {
+  transition: all 0.2s;
+}
+.page-enter-from,
+.page-leave-to {
+  opacity: 0;
+  filter: blur(1rem);
+}
+</style>
 
 
 

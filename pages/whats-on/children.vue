@@ -11,3 +11,4 @@
         Why not send your children to our Sunday Club? They will be very welcome. </p>
 	</article>
 </template>
+

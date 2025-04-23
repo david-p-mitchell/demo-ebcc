@@ -1,27 +1,29 @@
 <template>
-    <div class="bible-study">
-        <NuxtLink prefetch to="/whats-on/bible-study/" class="bible-study box-title">
+    <div class="discoverers">
+        <NuxtLink prefetch to="/whats-on/youth/" class="discoverers box-title">
     <EventsCalendarEventComponent :event="event" />
         </NuxtLink>
     </div>
 </template>
 <script setup lang="ts">
-import type { CalendarEvent } from '../../../types/CalendarEvent';
+import type { CalendarEvent } from '~/types/CalendarEvent';
 const props = defineProps<{ event: CalendarEvent }>();
 </script>
 
 <style>
-.bible-study {
-  background-color: #FFF3CD;
+.discoverers {
+  background-color: #A8DADC;
   margin-bottom: 1rem;
   overflow: hidden;
   text-decoration: none;
   color: #000;
-  border-radius: 18px;
+  border-radius: 18px !important;
 }
-.bible-study:hover {
-  background-color:  #F0DFA7;
-  
+
+
+
+.discoverers :hover {
+  background-color:  #7AA8B8 !important;
   text-decoration: none;
 }
 
