@@ -1,4 +1,3 @@
-<!-- components/BurgerMenu.vue -->
 <template>
   <header ref="header" class="header">
     <div class="header-left">
@@ -8,21 +7,44 @@
       <button class="burger-button" @click="toggleMenu">
         <span class="burger-icon">{{ isOpen ? '✕' : '☰' }}</span>
       </button>
-      
-      <nav :class="{ 'menu': true, 'is-open': isOpen }" :style="{ top: headerHeight + 'px' }">
+
+      <nav
+        class="menu"
+        :class="{ 'is-open': isOpen }"
+        :style="{ top: headerHeight + 'px' }"
+      >
         <ul class="main-menu">
-          <li v-for="(item, index) in navItems" :key="index" :class="{ 'has-submenu': item.submenu }">
+          <li
+            v-for="(item, index) in navItems"
+            :key="index"
+            :class="{ 'has-submenu': item.submenu }"
+          >
             <div class="menu-item-wrapper">
-              <NuxtLink prefetch :to="item.link || '#'" @click="closeMenu" class="main-link">
+              <NuxtLink
+                prefetch
+                :to="item.link || '#'"
+                @click="closeMenu"
+                class="main-link"
+              >
                 {{ item.title }}
               </NuxtLink>
-              <button v-if="item.submenu && !isDesktop" class="submenu-toggle" @click.prevent="toggleSubmenu(index)">
+              <button
+                v-if="item.submenu && !isDesktop"
+                class="submenu-toggle"
+                @click.prevent="toggleSubmenu(index)"
+              >
                 <span class="arrow">{{ openSubmenu === index ? '▴' : '▾' }}</span>
               </button>
             </div>
-            <ul v-if="item.submenu" v-show="openSubmenu === index || isDesktop" class="submenu">
+            <ul
+              v-if="item.submenu"
+              v-show="openSubmenu === index || isDesktop"
+              class="submenu"
+            >
               <li v-for="(subItem, subIndex) in item.submenu" :key="subIndex">
-                <NuxtLink prefetch :to="subItem.link" @click="closeMenu">{{ subItem.title }}</NuxtLink>
+                <NuxtLink prefetch :to="subItem.link" @click="closeMenu">
+                  {{ subItem.title }}
+                </NuxtLink>
               </li>
             </ul>
           </li>
@@ -32,80 +54,70 @@
   </header>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref, onMounted, onUnmounted } from 'vue'
-import type { NavItem } from '../../types/NavItem'
+<script setup lang="ts">
+import { ref, onMounted, onUnmounted, watch } from 'vue'
+import { useWindowSize } from '@vueuse/core'
 import navItems from './NavigationLinks'
+import type { NavItem } from '../../types/NavItem'
 
-export default defineComponent({
-  setup() {
-    const header = ref<HTMLElement | null>(null)
-    const headerHeight = ref(0)
+const { width, height } = useWindowSize()
 
-    const updateHeaderHeight = () => {
-      if (header.value) {
-        headerHeight.value = header.value.offsetHeight
-      }
-    }
+const isOpen = ref(false)
+const openSubmenu = ref<number | null>(null)
+const isDesktop = ref(false)
+const header = ref<HTMLElement | null>(null)
+const headerHeight = ref(0)
 
-    onMounted(() => {
-      updateHeaderHeight()
-      window.addEventListener('resize', updateHeaderHeight)
-    })
-
-    onUnmounted(() => {
-      window.removeEventListener('resize', updateHeaderHeight)
-    })
-
-    return { header, headerHeight }
-  },
-  data() {
-    return {
-      isOpen: false,
-      openSubmenu: null as number | null,
-      isDesktop: false,
-      navItems: navItems as NavItem[]
-    }
-  },
-  mounted() {
-    this.checkDesktop()
-    window.addEventListener('resize', this.checkDesktop)
-  },
-  beforeDestroy() {
-    window.removeEventListener('resize', this.checkDesktop)
-  },
-  methods: {
-    toggleMenu() {
-      this.isOpen = !this.isOpen
-      if (!this.isOpen) {
-        this.openSubmenu = null
-        document.body.classList.remove('menu-open')
-      } else {
-        document.body.classList.add('menu-open')
-      }
-    },
-    toggleSubmenu(index: number) {
-      if (!this.isDesktop) {
-        this.openSubmenu = this.openSubmenu === index ? null : index
-        this.isOpen = true
-      }
-    },
-    checkDesktop() {
-      this.isDesktop = window.innerWidth >= 768
-      if (this.isDesktop) {
-        this.isOpen = true
-        this.openSubmenu = null
-      }
-    },
-    closeMenu() {
-      if (!this.isDesktop) {
-        this.isOpen = false
-        this.openSubmenu = null
-        document.body.classList.remove('menu-open')
-      }
-    }
+const updateHeaderHeight = () => {
+  if (header.value) {
+    headerHeight.value = header.value.offsetHeight
   }
+}
+
+const checkDesktop = () => {
+  isDesktop.value = width.value >= 768
+  if (isDesktop.value) {
+    isOpen.value = true
+    openSubmenu.value = null
+  }
+}
+
+watch(height, updateHeaderHeight)
+watch(width, checkDesktop, { immediate: true })
+
+onMounted(() => {
+  updateHeaderHeight()
 })
+
+onUnmounted(() => {
+  document.body.classList.remove('menu-open')
+})
+
+const toggleMenu = () => {
+  isOpen.value = !isOpen.value
+  if (!isOpen.value) {
+    openSubmenu.value = null
+    document.body.classList.remove('menu-open')
+  } else {
+    document.body.classList.add('menu-open')
+  }
+}
+
+const toggleSubmenu = (index: number) => {
+  if (!isDesktop.value) {
+    openSubmenu.value = openSubmenu.value === index ? null : index
+    isOpen.value = true
+  }
+}
+
+const closeMenu = () => {
+  if (!isDesktop.value) {
+    isOpen.value = false
+    openSubmenu.value = null
+    document.body.classList.remove('menu-open')
+  }
+}
+
 </script>
 
 <style scoped>
@@ -147,14 +159,24 @@ export default defineComponent({
 }
 
 .menu {
-  display: none;
+  position: fixed;
+  left: 0;
+  width: 100vw;
+  background: #fff;
+  z-index: 1000;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: max-height 0.5s ease, opacity 0.4s ease;
 }
 
 .menu.is-open {
-  display: block;
+  max-height: 100vh;
+  opacity: 1;
+  pointer-events: auto;
 }
 
-/* Mobile styles */
 .main-menu {
   list-style: none;
   padding: 0;
@@ -220,35 +242,13 @@ export default defineComponent({
   background: #f5f5f5;
 }
 
-/* Mobile dropdown positioning */
-@media (max-width: 767px) {
-  .menu.is-open {
-    position: fixed;
-    left: 0;
-    width: 100vw;
-    margin: 0;
-    padding: 0;
-    background: #fff;
-    z-index: 1000;
-    overflow-y: auto;
-  }
-
-  .burger-menu {
-    margin-right: 0;
-  }
-
-  body.menu-open {
-    overflow: hidden;
-  }
-}
-
-/* Desktop styles */
 @media (min-width: 768px) {
   .burger-button {
     display: none;
   }
 
   .menu {
+    all: unset;
     display: block;
     position: static;
   }
@@ -283,7 +283,7 @@ export default defineComponent({
   }
 
   .has-submenu > .menu-item-wrapper:after {
-    content: '▾'; /* Same down arrow as before */
+    content: '▾';
     position: absolute;
     right: 5px;
     top: 50%;
@@ -312,5 +312,11 @@ export default defineComponent({
   .submenu a:last-child {
     border-bottom: none;
   }
+}
+
+body.menu-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
 }
 </style>

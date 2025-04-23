@@ -43,6 +43,11 @@ export default defineNuxtConfig({
   },
   typescript: {
     shim: false,
+    tsConfig: {
+      compilerOptions: {
+        lib: ['esnext', 'dom'],  // Adding 'dom' here enables DOM-related types like window, document, etc.
+      }
+    }
   },
   vite: {
     build: {
