@@ -47,6 +47,7 @@ function getTime(dateString?: string): string {
   padding: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   width: 275px;
+  border-radius: 18px;
 }
 
 .event-box:hover {
