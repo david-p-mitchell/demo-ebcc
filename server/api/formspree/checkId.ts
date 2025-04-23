@@ -2,10 +2,10 @@
 export default defineEventHandler(async () => {
     const formId = useRuntimeConfig().formspreeFormId;
     
-    if (!formId) {
+    if (!formId || formId == null) {
       return { error: 'Missing Formspree ID.' };
     }
     
-    return { success: true, formId }; // Optionally return the formId
+    return { success: true };
   });
   
