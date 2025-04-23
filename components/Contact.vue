@@ -18,9 +18,13 @@ async function checkFormId() {
   const result = await response.json()
   
   if (response.ok) {
-    if(result.formId) {
-    hasFormId.value = true
-  }
+    console.log(result);
+    if(result.success) {
+    hasFormId.value = true;
+    }
+    else {
+      hasFormId.value = false;
+    }
   } else {
     hasFormId.value = false
     console.error('Error:', result.error)
