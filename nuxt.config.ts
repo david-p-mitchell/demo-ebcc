@@ -1,9 +1,7 @@
-
-
 import { defineNuxtConfig } from 'nuxt/config';
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
-  devtools: { enabled: true },
+  devtools: { enabled: false },
   modules: ['@nuxt/image-edge'],
   alias: {
     '@': './',
@@ -38,10 +36,10 @@ export default defineNuxtConfig({
     pageTransition: { name: 'page', mode: 'out-in' }
   },
   runtimeConfig: {
-    public: {
-      googleCalendarApiKey: process.env.GOOGLE_CALENDAR_API_KEY,
-      googleCalendarId: process.env.GOOGLE_CALENDARID,
-    },
+    googleCalendarApiKey: process.env.GOOGLE_CALENDAR_API_KEY,
+    googleCalendarId: process.env.GOOGLE_CALENDARID,
+    formspreeFormId: process.env.FORMSPREE_FORM_ID,
+    
   },
   typescript: {
     shim: false,

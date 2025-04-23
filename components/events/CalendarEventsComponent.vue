@@ -9,7 +9,7 @@
           <div v-else-if="event.summary === 'Prayer Meeting'"><SundayPrayerEventComponent :event="event" /></div>
           <div v-else-if="event.summary === 'Evening Service'"><SundayEveningComponent :event="event" /></div>
           <div v-else-if="event.summary === 'Bible Study & Prayer Meeting'"><BibleStudyEventComponent :event="event" /></div>
-
+          <div v-else-if="event.summary === 'Discoverers'"><DiscoverersEventComponent :event="event" /></div>
           <div v-else class="event-box">
           <CalendarEventComponent :event="event"/>
         </div>
@@ -22,7 +22,6 @@
 <script setup lang="ts">
 // Import Vue functions
 import { ref, onMounted } from 'vue';
-import { GoogleCalendar } from '../../apis/googleCal';
 
 // Import the Event type
 import type { CalendarEvent } from '../../types/CalendarEvent';
@@ -32,22 +31,20 @@ import BibleStudyEventComponent from './specific-events/BibleStudyEventComponent
 import CalendarEventComponent from './CalendarEventComponent.vue';
 import SundayPrayerEventComponent from './specific-events/SundayPrayerEventComponent.vue';
 import SundayClubEventComponent from './specific-events/SundayClubEventComponent.vue';
-import { useRuntimeConfig } from 'nuxt/app';
+import DiscoverersEventComponent from './specific-events/DiscoverersEventComponent.vue';
+import { useFetch, useRuntimeConfig } from 'nuxt/app';
 const events = ref<CalendarEvent[]>([]);  // Store events in a ref properly
 
 
 // Function to fetch events
 async function loadGoogle() {
-  const config = useRuntimeConfig();
-  const googleCalendar = new GoogleCalendar(config);
-
   try {
-    const fetchedEvents = await googleCalendar.getEvents(4);
-    // Ensure that fetched events match the Event type
-    events.value = fetchedEvents as CalendarEvent[];
-  } catch (error) {
-    console.error('Error loading Google Calendar events:', error);
-  }
+      const data = await $fetch<CalendarEvent[]>('/api/google-calendar?number=4');
+      events.value = data;
+    } catch (error) {
+      console.error('Failed to fetch events:', error);
+      events.value = [];
+    }
 }
 
 // Trigger loading events when the component is mounted
