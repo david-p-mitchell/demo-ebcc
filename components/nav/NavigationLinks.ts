@@ -1,4 +1,4 @@
-import type { NavItem } from "@/types/NavItem";
+import type { NavItem } from '@/types/NavItem';
 
 const aboutSection :NavItem =
 {
@@ -44,7 +44,7 @@ const whatsaChristianSection: NavItem = {
 };
 
 const sermonSection: NavItem ={ title:"Sermons", link: "/sermons/" }
-const contactSection: NavItem ={ title:"Contact Us", link: "/contact/contact-us/" }
+const contactSection: NavItem ={ title:"Contact Us", link: "/contact-us/" }
 
 const navItems: NavItem[] = [
   aboutSection,

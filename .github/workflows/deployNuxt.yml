@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - nuxt-migration
+      - main
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -16,19 +18,28 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18
+          cache: 'npm'
+
+      - name: Create .env file
+        run: |
+          echo "GOOGLE_CALENDAR_API_KEY=${{ secrets.GOOGLE_CALENDAR_API_KEY }}" >> .env
+          echo "GOOGLE_CALENDARID=${{ secrets.GOOGLE_CALENDARID }}" >> .env
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
-      - name: Build project
+      - name: Build Nuxt site
         run: npm run generate
 
+      - name: Configure GitHub Pages
+        run: echo 'david-p-mitchell.github.io' > ./dist/CNAME
+
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+          branch: gh-pages
+          folder: .output/public

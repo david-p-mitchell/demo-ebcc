@@ -6,7 +6,6 @@
     </div>
 </template>
 <script setup lang="ts">
-import { defineProps } from 'vue';
 import type { CalendarEvent } from '~/types/CalendarEvent';
 const props = defineProps<{ event: CalendarEvent }>();
 </script>
@@ -15,10 +14,10 @@ const props = defineProps<{ event: CalendarEvent }>();
 .sunday-prayer {
     background-color: #e2e2cd;
   margin-bottom: 1rem;
-  border-radius: 18px;
   overflow: hidden;
   color: #777;
   text-decoration: none; 
+  border-radius: 18px;
 }
 .sunday-prayer a {
   text-decoration: none; 
