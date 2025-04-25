@@ -17,9 +17,8 @@
     "vue-router": "latest"
   },
   "devDependencies": {
-    "@nuxt/typescript-build": "^3.0.2",
     "compression-webpack-plugin": "^11.1.0",
     "nuxt": "^3.16.0",
-    "typescript": "^5.8.2"
+    "typescript": "^5.8.3"
   }
 }
