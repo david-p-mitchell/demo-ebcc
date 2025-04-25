@@ -35,11 +35,3 @@ jobs:
       - name: Build Nuxt site
         run: npm run generate
 
-      - name: Configure GitHub Pages
-        run: echo 'david-p-mitchell.github.io' > ./dist/CNAME
-
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          branch: gh-pages
-          folder: .output/public
