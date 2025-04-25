@@ -1,0 +1,1 @@
+import{_ as r,c as t,a as o,o as n}from"./BBsuUFjf.js";const s={};function a(c,e){return n(),t("div",null,e[0]||(e[0]=[o("p",null," PlaceHolder Text",-1),o("a",{href:"https://us02web.zoom.us/j/84104984721?pwd=UG5wNGp2eXpDUWtUVmZoRFBPcjVvUT09"},"Click Here for Zoom Link",-1)]))}const p=r(s,[["render",a]]);export{p as default};

@@ -1,0 +1,1 @@
+import{_ as a,c as n,t as o,o as s}from"./BBsuUFjf.js";const l={name:"CallWidget",props:{text:{type:String,required:!0}},methods:{callNumber(){}}};function c(i,e,t,p,m,r){return s(),n("a",{href:"#",onClick:e[0]||(e[0]=d=>r.callNumber())},o(t.text),1)}const _=a(l,[["render",c]]);export{_ as C};

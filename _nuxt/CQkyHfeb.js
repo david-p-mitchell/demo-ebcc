@@ -1,0 +1,1 @@
+import{C as o}from"./Bl_FqtFI.js";import{_ as c,c as e,b as a,o as n}from"./BBsuUFjf.js";const s={name:"ContactPage"},r={class:"contact-page"};function _(p,m,d,f,i,l){const t=o;return n(),e("div",r,[a(t)])}const $=c(s,[["render",_]]);export{$ as default};
