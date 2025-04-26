@@ -91,9 +91,9 @@ export default defineComponent({
       }
     },
     checkDesktop() {
-      this.isDesktop = window.innerWidth >= 768
+      this.isDesktop = window.innerWidth >= 1024
+      this.isOpen = this.isDesktop
       if (this.isDesktop) {
-        this.isOpen = true
         this.openSubmenu = null
       }
     },
@@ -221,7 +221,7 @@ export default defineComponent({
 }
 
 /* Mobile dropdown positioning */
-@media (max-width: 767px) {
+@media (max-width: 1023px) {
   .menu.is-open {
     position: fixed;
     left: 0;
@@ -243,7 +243,7 @@ export default defineComponent({
 }
 
 /* Desktop styles */
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .burger-button {
     display: none;
   }
