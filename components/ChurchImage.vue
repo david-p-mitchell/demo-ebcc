@@ -5,6 +5,7 @@
   alt="Enon Baptist Church"
   class="responsive-image"
   preload
+  loading="eager"
 />
   <!-- <img fetchpriority="high" src="/images/enonChurch.webp" alt="Enon Baptist Church" class="responsive-image"  /> -->
   
