@@ -9,7 +9,6 @@ export const useElementCount  = (elementWidth = 300, padding = 20) => {
     const totalElementWidth = (elementWidth + padding * 2) - 30;
     
     let count = Math.floor(width.value / totalElementWidth);
-    console.log(count.toString());
     return count;
   })
 
