@@ -1,9 +1,9 @@
 <template>
   <div>
-    <!-- <PageMeta
+    <PageMeta
       :title="'Home - Enon Baptist Church'"
       :description="'Welcome to Enon Baptist Church. We are a community of believers committed to worship and service.'"
-    /> -->
+    />
     
       <ChurchImage @imageRendered="onImageRendered" />
       <div v-if="imageRendered">
