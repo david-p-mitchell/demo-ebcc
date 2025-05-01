@@ -34,7 +34,7 @@ import SundayClubEventComponent from './specific-events/SundayClubEventComponent
 import DiscoverersEventComponent from './specific-events/DiscoverersEventComponent.vue';
 import { useElementCount } from '~/composables/useElementCount';
 const events = ref<CalendarEvent[]>([]);  // Store events in a ref properly
-
+const emit = defineEmits(['eventsLoaded']); // Define the custom event
 
 
 // Function to fetch events
@@ -55,6 +55,7 @@ async function loadGoogle() {
 
 onMounted(async () => {
   await loadGoogle();
+  emit('eventsLoaded'); // Notify the parent
   console.log('Hydrated:', 'CalendarEvents');
 });
 

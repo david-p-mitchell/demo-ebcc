@@ -13,8 +13,11 @@
             We are a group of people who meet together to worship God. We are concerned for one another and those who live around us. We believe the Bible to be God’s Word that is relevant to all areas of our life. In particular, we have a personal belief in Jesus Christ and through him have a real relationship with God.
           </p>
         </div>
-        <CalendarEventsComponent />
-        <Contact />
+        <CalendarEventsComponent @eventsLoaded="onEventsLoaded"/>
+        <div v-if="eventsLoaded">
+          <Contact />
+        </div>
+        
       </div>
     </ClientOnly>
   </div>
@@ -31,9 +34,14 @@ onMounted(() => {
   console.log('Hydrated:', 'page');
 });
 const imageRendered = ref(false);
+const eventsLoaded = ref(false);
 
 const onImageRendered = () => {
   imageRendered.value = true;
+};
+
+const onEventsLoaded = () => {
+  eventsLoaded.value = true;
 };
 </script>
 
