@@ -56,7 +56,6 @@ async function loadGoogle() {
 onMounted(async () => {
   await loadGoogle();
   emit('eventsLoaded'); // Notify the parent
-  console.log('Hydrated:', 'CalendarEvents');
 });
 
 // Optionally add a method to format date if needed

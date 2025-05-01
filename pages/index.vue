@@ -26,11 +26,6 @@ import { ref } from 'vue';
 import CalendarEventsComponent from '~/components/events/CalendarEventsComponent.vue';
 import ChurchImage from '~/components/ChurchImage.vue';
 import Contact from '~/components/Contact.vue';
-
-
-onMounted(() => {
-  console.log('Hydrated:', 'page');
-});
 const imageRendered = ref(false);
 const eventsLoaded = ref(false);
 

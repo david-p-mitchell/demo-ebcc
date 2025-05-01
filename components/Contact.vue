@@ -64,7 +64,6 @@ const handleSubmit = async () => {
 // Check Form ID when the component mounts
 onMounted(() => {
   checkFormId();
-  console.log('Hydrated:', 'Contact');
 })
 </script>
 

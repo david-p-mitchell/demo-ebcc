@@ -25,6 +25,5 @@ const notifyParent = async () => {
 onMounted(async () => {
   await nextTick(); // Ensure the component is fully mounted
   notifyParent();
-  console.log('Hydrated:', 'ChurchImage');
 });
 </script>
