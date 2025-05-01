@@ -4,11 +4,11 @@ import '@/assets/css/site.css';
 
 <template>
   <div class="app-container">
-    <!-- <NavigationHeader /> -->
+    <NavigationHeader />
     <div class="content">
       <NuxtPage />
     </div>
-    <!-- <Footer /> -->
+    <Footer />
   </div>
 </template>
 
