@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <!-- <div>
     <PageMeta
       :title="'Home - Enon Baptist Church'"
       :description="'Welcome to Enon Baptist Church. We are a community of believers committed to worship and service.'"
@@ -20,7 +20,7 @@
         
       </div>
     </ClientOnly>
-  </div>
+  </div> -->
 </template>
 
 <script setup lang="ts">
