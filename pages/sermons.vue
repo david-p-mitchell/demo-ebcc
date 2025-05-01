@@ -1,7 +1,7 @@
 <template>
   <div class="sermons-page">
-    <h1 class="sermons-title">Recent Sermons</h1>
-    <p class="sermons-description">Here is our latest uploaded sermon.</p>
+    <h1>Recent Sermons</h1>
+    <p>Here is our latest uploaded sermon.</p>
     <SermonWidget />
   </div>
 </template>
