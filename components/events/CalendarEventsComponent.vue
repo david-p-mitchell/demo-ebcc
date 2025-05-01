@@ -51,7 +51,12 @@ async function loadGoogle() {
 }
 
 // Trigger loading events when the component is mounted
-onMounted(loadGoogle);
+
+
+onMounted(async () => {
+  await loadGoogle();
+  console.log('Hydrated:', 'CalendarEvents');
+});
 
 // Optionally add a method to format date if needed
 
