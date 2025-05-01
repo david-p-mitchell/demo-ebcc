@@ -8,7 +8,7 @@ import '@/assets/css/site.css';
     <div class="content">
       <NuxtPage />
     </div>
-    <Footer />
+    <!-- <Footer /> -->
   </div>
 </template>
 
