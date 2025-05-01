@@ -4,7 +4,7 @@
       :title="'Home - Enon Baptist Church'"
       :description="'Welcome to Enon Baptist Church. We are a community of believers committed to worship and service.'"
     />
-    <ClientOnly>
+    
       <ChurchImage @imageRendered="onImageRendered" />
       <div v-if="imageRendered">
         <div class="home-page">
@@ -19,7 +19,7 @@
         </div>
         
       </div>
-    </ClientOnly>
+    
   </div>
 </template>
 
