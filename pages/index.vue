@@ -13,11 +13,12 @@
             We are a group of people who meet together to worship God. We are concerned for one another and those who live around us. We believe the Bible to be God’s Word that is relevant to all areas of our life. In particular, we have a personal belief in Jesus Christ and through him have a real relationship with God.
           </p>
         </div>
-        <CalendarEventsComponent @eventsLoaded="onEventsLoaded"/>
-        <div v-if="eventsLoaded">
-          <Contact />
-        </div>
       </div>
+      <CalendarEventsComponent @eventsLoaded="onEventsLoaded"/>
+      <div v-if="eventsLoaded">
+        <Contact />
+      </div>
+      
   </div>
 </template>
 
