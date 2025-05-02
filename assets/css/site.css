@@ -26,7 +26,7 @@ html,body {
       height: auto;
       max-height: 600px; /* Maintains the aspect ratio */
       display: block; /* Removes extra spacing below the image */
-      
+      aspect-ratio: 1487 / 600;
   }
 
 .App {
