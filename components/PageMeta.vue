@@ -1,6 +1,4 @@
-<template>
-    <!-- No need to render anything, this component just manages head tags -->
-  </template>
+
   
   <script>
   import { useHead } from '@vueuse/head'

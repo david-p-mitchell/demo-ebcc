@@ -16,6 +16,9 @@
         </div>
       </div>
     </div>
+    <div v-else>
+      <div class="event-container"></div>
+    </div>
   </div>
 </template>
 
@@ -34,7 +37,7 @@ import SundayClubEventComponent from './specific-events/SundayClubEventComponent
 import DiscoverersEventComponent from './specific-events/DiscoverersEventComponent.vue';
 import { useElementCount } from '~/composables/useElementCount';
 const events = ref<CalendarEvent[]>([]);  // Store events in a ref properly
-
+const emit = defineEmits(['eventsLoaded']); // Define the custom event
 
 
 // Function to fetch events
@@ -55,7 +58,7 @@ async function loadGoogle() {
 
 onMounted(async () => {
   await loadGoogle();
-  console.log('Hydrated:', 'CalendarEvents');
+  emit('eventsLoaded'); // Notify the parent
 });
 
 // Optionally add a method to format date if needed
@@ -69,10 +72,17 @@ onMounted(async () => {
   flex-wrap: wrap;  /* Allow items to wrap when necessary */
   gap: 10px;        /* Space between items */
   justify-content: flex-start;  /* Align items to the left */
+  
 }
 
 .event-underline {
   border-bottom: 1px solid var(--nav-bar-bg-color);
+}
+
+@media (min-width: 1024px) {
+  .event-container {
+    height: 128px;
+  }
 }
 
 

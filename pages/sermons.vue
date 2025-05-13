@@ -1,7 +1,7 @@
 <template>
   <div class="sermons-page">
-    <h1 class="sermons-title">Recent Sermons</h1>
-    <p class="sermons-description">Stay inspired by listening to our recent sermons.</p>
+    <h1>Recent Sermons</h1>
+    <p>Here is our latest uploaded sermon.</p>
     <SermonWidget />
   </div>
 </template>
@@ -16,17 +16,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-.sermons-page {
-  /* Your styles here */
-}
-
-.sermons-title {
-  /* Your styles here */
-}
-
-.sermons-description {
-  /* Your styles here */
-}
-</style>

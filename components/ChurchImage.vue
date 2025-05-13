@@ -7,7 +7,7 @@
   preload
   loading="eager"
 /> -->
-  <img fetchpriority="high" src="/images/enonChurch.webp" alt="Enon Baptist Church" class="responsive-image"@load="notifyParent"  />
+  <img fetchpriority="high" src="/images/enonChurch.webp" alt="Enon Baptist Church" class="responsive-image" @load="notifyParent"  />
   
   
 </template>
@@ -25,6 +25,5 @@ const notifyParent = async () => {
 onMounted(async () => {
   await nextTick(); // Ensure the component is fully mounted
   notifyParent();
-  console.log('Hydrated:', 'ChurchImage');
 });
 </script>
