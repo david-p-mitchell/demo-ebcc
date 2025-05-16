@@ -1,0 +1,75 @@
+name: Deploy Nuxt App via SSH
+
+on:
+  push:
+    branches:
+      - main
+      - nuxt-migration
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+env:
+    PROJECT_PATH: /home/${{ secrets.DEPLOY_HP_SSH_USER }}/apps/${{ github.repository }}
+    REPO_SSH_URL: git@github.com:${{ github.repository }}.git
+    PM2_APP_NAME: ${{ github.event.repository.name }}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'npm'
+
+      - name: Create .env file
+        run: |
+          echo "GOOGLE_CALENDAR_API_KEY=${{ secrets.GOOGLE_CALENDAR_API_KEY }}" >> .env
+          echo "GOOGLE_CALENDARID=${{ secrets.GOOGLE_CALENDARID }}" >> .env
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Nuxt site
+        run: npm run build
+
+      - name: Deploy via SSH to server
+        env:
+          GOOGLE_CALENDAR_API_KEY: ${{ secrets.GOOGLE_CALENDAR_API_KEY }}
+          GOOGLE_CALENDARID: ${{ secrets.GOOGLE_CALENDARID }}
+          DEPLOY_SSH_USER: ${{ secrets.DEPLOY_HP_SSH_USER }}
+          DEPLOY_SSH_HOST: ${{ secrets.DEPLOY_HP_SSH_HOST }}
+          DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_HP_SSH_KEY }}
+          PROJECT_PATH: ${{ env.PROJECT_PATH }}
+          REPO_SSH_URL: ${{ env.REPO_SSH_URL }}
+          PM2_APP_NAME: ${{ env.PM2_APP_NAME }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "$DEPLOY_SSH_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+
+          ssh-keyscan -H $DEPLOY_SSH_HOST >> ~/.ssh/known_hosts
+
+          ssh -i ~/.ssh/id_rsa $DEPLOY_SSH_USER@$DEPLOY_SSH_HOST "
+            if [ -d $PROJECT_PATH/.git ]; then
+              echo 'Repo exists, pulling latest changes...'
+              cd $PROJECT_PATH && git pull
+            else
+              echo 'Repo not found, cloning fresh...'
+              git clone $REPO_SSH_URL $PROJECT_PATH
+            fi &&
+            cd $PROJECT_PATH &&
+            export GOOGLE_CALENDAR_API_KEY='$GOOGLE_CALENDAR_API_KEY' &&
+            export GOOGLE_CALENDARID='$GOOGLE_CALENDARID' &&
+            npm ci &&
+            npm run build &&
+            pm2 restart $PM2_APP_NAME || pm2 start $PM2_APP_NAME
+          "
+        shell: bash
