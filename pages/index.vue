@@ -1,11 +1,12 @@
 <template>
+  
   <div>
     <PageMeta
       :title="'Home - Enon Baptist Church'"
       :description="'Welcome to Enon Baptist Church. We are a community of believers committed to worship and service.'"
     />
     
-      <ChurchImage @imageRendered="onImageRendered" />
+    <ChurchImage @imageRendered="onImageRendered" />
       <div v-if="imageRendered">
         <div class="home-page">
           <h1 class="welcome">Welcome to Enon Baptist Church</h1>
@@ -13,30 +14,42 @@
             We are a group of people who meet together to worship God. We are concerned for one another and those who live around us. We believe the Bible to be God’s Word that is relevant to all areas of our life. In particular, we have a personal belief in Jesus Christ and through him have a real relationship with God.
           </p>
         </div>
-      </div>
-      <CalendarEventsComponent @eventsLoaded="onEventsLoaded"/>
-      <div v-if="eventsLoaded">
+        <CalendarEventsComponent :events="events" />  
         <Contact />
       </div>
-      
+  
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import CalendarEventsComponent from '~/components/events/CalendarEventsComponent.vue';
-import ChurchImage from '~/components/ChurchImage.vue';
-import Contact from '~/components/Contact.vue';
+import { ref, onBeforeMount, computed, watch } from 'vue';
+import CalendarEventsComponent from '../components/events/CalendarEventsComponent.vue';
+import ChurchImage from '../components/ChurchImage.vue';
+import Contact from '../components/Contact.vue';
+import { fetchGoogleEvents, useGoogleEvents } from '../composables/useGoogleEvents';
+import { usePageReady } from '../composables/usePageReady'
+
+const { markPageReady } = usePageReady()
 const imageRendered = ref(false);
-const eventsLoaded = ref(false);
+
+const { events } = useGoogleEvents();
+
+const isReady = computed(() => {
+  const ready = events.value
+  return ready
+})
+await fetchGoogleEvents();
+
+watch(isReady, (ready) => {
+  console.log('isReady watcher triggered:', ready)
+  if (ready) markPageReady()
+})
 
 const onImageRendered = () => {
   imageRendered.value = true;
 };
 
-const onEventsLoaded = () => {
-  eventsLoaded.value = true;
-};
+
 </script>
 
 <style scoped>
