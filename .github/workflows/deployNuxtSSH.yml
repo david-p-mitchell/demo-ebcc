@@ -20,6 +20,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
+      - name: Print ProjPath
+        run: echo "${{ env.PROJECT_PATH }}" | head -c 20
+
       - name: Checkout repository
         uses: actions/checkout@v4
 
@@ -39,6 +43,13 @@ jobs:
 
       - name: Build Nuxt site
         run: npm run build
+
+      - name: Setup SSH
+        run: |
+            mkdir -p ~/.ssh
+            echo "${{ secrets.DEPLOY_HP_SSH_KEY }}" > ~/.ssh/id_ed25519
+            chmod 600 ~/.ssh/id_ed25519
+            ssh-keyscan github.com >> ~/.ssh/known_hosts
 
       - name: Deploy via SSH to server
         env:
