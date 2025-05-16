@@ -12,6 +12,7 @@ export interface CalendarEvent {
     }
     location: string;
     description?: string
+    isRecurring: boolean
 
   }
   
