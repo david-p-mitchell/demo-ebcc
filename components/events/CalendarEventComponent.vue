@@ -8,7 +8,7 @@
     <p class="event-time">{{ getTime(event.start.dateTime || event.start.date) }} - {{ getTime(event.end.dateTime || event.end.date) }}</p>
     <p class="event-description" v-if="event.description">{{ event.description }}</p>
     <div >
-      
+      <p class="event-recurring" v-if="event.isRecurring"></p>
       <!-- <p class="more-info">More Information</p> -->
        <!-- <div style="display: flex-end;"><DirectionsComponent :location="event.location" :text="text"  /></div> -->
     
@@ -17,7 +17,7 @@
 </template>
 
 <script setup lang="ts">
-import type { CalendarEvent } from '~/types/CalendarEvent';
+import type { CalendarEvent } from '@/types/CalendarEvent';
 
 const props = defineProps<{ event: CalendarEvent }>();
 const text: string = "";

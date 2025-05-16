@@ -1,6 +1,6 @@
 import { defineEventHandler, getQuery, sendError, createError } from 'h3'
 import { useRuntimeConfig } from '#imports'
-import type { CalendarEvent } from '~/types/CalendarEvent'
+import type { CalendarEvent } from '../../types/CalendarEvent'
 
 // In-memory cache
 let cache: Record<number, { data: CalendarEvent[]; timestamp: number }> = {};
@@ -34,7 +34,7 @@ export default defineEventHandler(async (event) => {
     const data = await response.json();
     
     const filtered = data.items.filter((item: any) => item.status !== 'cancelled' && new Date(item.end.dateTime ?? item.end.date ?? 0) > new Date());
-
+    
     const deduped: CalendarEvent[] = filtered.filter((current: any, _index: number, all: any[]) => {
       return all.every((existing: any) => {
         if (existing === current) return true;
@@ -63,6 +63,7 @@ export default defineEventHandler(async (event) => {
       end: item.end,
       location: item.location,
       description: item.description,
+      isRecurring: (item.recurringEventId != null)
     }));
 
     deduped.sort((a: CalendarEvent, b: CalendarEvent) => {

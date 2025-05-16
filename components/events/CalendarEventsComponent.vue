@@ -35,7 +35,7 @@ import CalendarEventComponent from './CalendarEventComponent.vue';
 import SundayPrayerEventComponent from './specific-events/SundayPrayerEventComponent.vue';
 import SundayClubEventComponent from './specific-events/SundayClubEventComponent.vue';
 import DiscoverersEventComponent from './specific-events/DiscoverersEventComponent.vue';
-import { useElementCount } from '~/composables/useElementCount';
+import { useElementCount } from '../../composables/useElementCount';
 const events = ref<CalendarEvent[]>([]);  // Store events in a ref properly
 const emit = defineEmits(['eventsLoaded']); // Define the custom event
 
